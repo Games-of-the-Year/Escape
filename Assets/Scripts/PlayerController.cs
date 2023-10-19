@@ -35,24 +35,6 @@ public class PlayerController : MonoBehaviour
         TryGetComponent(out playerInput);
     }
 
-    private void OnEnable()
-    {
-        playerInput.actions["Move"].performed += OnMove;
-        playerInput.actions["Move"].canceled += OnMoveStop;
-    }
-
-    private void OnDisable()
-    {
-        playerInput.actions["Move"].performed -= OnMove;
-        playerInput.actions["Move"].canceled -= OnMoveStop;
-    }
-
-    public void OnMoveStop(InputAction.CallbackContext context)
-    {
-        // ボタンを離した時に呼ばれて、移動を止める
-        movement = Vector3.zero;
-    }
-
     public void OnMove(InputAction.CallbackContext context)
     {
         var value = context.ReadValue<Vector2>();
