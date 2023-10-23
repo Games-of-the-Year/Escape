@@ -10,6 +10,9 @@ public class PlayerController : MonoBehaviour
     // Player ID
     private int playerID;
 
+    [Header("Sub Behaviours")]
+    public PlayerMovementBehaviour movementBehaviour;
+
     private Rigidbody rb;
     private PlayerInput playerInput;
 
@@ -17,6 +20,7 @@ public class PlayerController : MonoBehaviour
     private bool isMoving;
 
     [SerializeField] private float speed = 10f;
+    public Vector3 smoothInputMovement;
 
     //Current Control Scheme
     private string currentControlScheme;
@@ -41,16 +45,20 @@ public class PlayerController : MonoBehaviour
         movement = new Vector3(value.x, 0, value.y);
     }
 
-    void FixedUpdate()
+    void Update()
     {
-        if (movement == Vector3.zero)
-        {
-            rb.velocity = Vector3.zero;
-            rb.angularVelocity = Vector3.zero;
-        }
-        else
-        {
-            rb.AddForce(movement * speed);
-        }
+        CalculateMovementInputSmoothing();
+        UpdatePlayerMovement();
+    }
+
+
+    private void CalculateMovementInputSmoothing()
+    {
+        smoothInputMovement = Vector3.Lerp(smoothInputMovement, movement, Time.deltaTime * speed);
+    }
+
+    private void UpdatePlayerMovement()
+    {
+        movementBehaviour
     }
 }
