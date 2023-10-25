@@ -60,74 +60,72 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
-    private void SetupUI()
-    {
-    }
 
-    public void TogglePauseState(PlayerController newFocusedPlayerController)
-    {
-        focusedPlayerController = newFocusedPlayerController;
 
-        isPaused = !isPaused;
+    //public void TogglePauseState(PlayerController newFocusedPlayerController)
+    //{
+    //    focusedPlayerController = newFocusedPlayerController;
 
-        ToggleTimeScale();
+    //    isPaused = !isPaused;
 
-        UpdateActivePlayerInputs();
+    //    ToggleTimeScale();
 
-        SwitchFocusedPlayerControlScheme();
+    //    UpdateActivePlayerInputs();
 
-        UpdateUIMenu();
+    //    SwitchFocusedPlayerControlScheme();
 
-    }
+    //    UpdateUIMenu();
 
-    void UpdateActivePlayerInputs()
-    {
-        for (int i = 0; i < activePlayerControllers.Count; i++)
-        {
-            if (activePlayerControllers[i] != focusedPlayerController)
-            {
-                activePlayerControllers[i].SetInputActiveState(isPaused);
-            }
+    //}
 
-        }
-    }
+    //void UpdateActivePlayerInputs()
+    //{
+    //    for (int i = 0; i < activePlayerControllers.Count; i++)
+    //    {
+    //        if (activePlayerControllers[i] != focusedPlayerController)
+    //        {
+    //            activePlayerControllers[i].SetInputActiveState(isPaused);
+    //        }
 
-    void SwitchFocusedPlayerControlScheme()
-    {
-        switch (isPaused)
-        {
-            case true:
-                focusedPlayerController.EnablePauseMenuControls();
-                break;
+    //    }
+    //}
 
-            case false:
-                focusedPlayerController.EnableGameplayControls();
-                break;
-        }
-    }
+    //void SwitchFocusedPlayerControlScheme()
+    //{
+    //    switch (isPaused)
+    //    {
+    //        case true:
+    //            focusedPlayerController.EnablePauseMenuControls();
+    //            break;
 
-    void UpdateUIMenu()
-    {
+    //        case false:
+    //            focusedPlayerController.EnableGameplayControls();
+    //            break;
+    //    }
+    //}
+
+    //void UpdateUIMenu()
+    //{
         //UIManager.Instance.UpdateUIMenuState(isPaused);
-    }
+    //}
 
-    void ToggleTimeScale()
-    {
-        float newTimeScale = 0f;
+    //void ToggleTimeScale()
+    //{
+    //    float newTimeScale = 0f;
 
-        switch (isPaused)
-        {
-            case true:
-                newTimeScale = 0f;
-                break;
+    //    switch (isPaused)
+    //    {
+    //        case true:
+    //            newTimeScale = 0f;
+    //            break;
 
-            case false:
-                newTimeScale = 1f;
-                break;
-        }
+    //        case false:
+    //            newTimeScale = 1f;
+    //            break;
+    //    }
 
-        Time.timeScale = newTimeScale;
-    }
+    //    Time.timeScale = newTimeScale;
+    //}
 
 
 

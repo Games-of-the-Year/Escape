@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Input Settings")]
     public PlayerInput playerInput;
-    public float movementSmoothingSpeed = 10f;
+    public float movementSmoothingSpeed = 1f;
     private Vector3 rawInputMovement;
     public Vector3 smoothInputMovement;
     //private Rigidbody rb;
@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
     //Current Control Scheme
     private string currentControlScheme;
 
-    private bool isMoving;
+    //private bool isMoving;
 
 
     // ゲームのセットアップ時にGameManagerから呼び出される
@@ -50,13 +50,13 @@ public class PlayerController : MonoBehaviour
         rawInputMovement = new Vector3(inputMovement.x, 0, inputMovement.y);
     }
 
-    public void OnTogglePause(InputAction.CallbackContext value)
-    {
-        if (value.started)
-        {
-            GameManager.Instance.TogglePauseState(this);
-        }
-    }
+    //public void OnTogglePause(InputAction.CallbackContext value)
+    //{
+    //    if (value.started)
+    //    {
+    //        GameManager.Instance.TogglePauseState(this);
+    //    }
+    //}
 
 
     void Update()
