@@ -93,4 +93,15 @@ public class PlayerController : MonoBehaviour
                 break;
         }
     }
+
+    public void EnableGameplayControls()
+    {
+        playerInput.SwitchCurrentActionMap(actionMapPlayer);
+    }
+
+    public void EnablePauseMenuControls()
+    {
+        playerInput.SwitchCurrentActionMap(actionMapUI);
+    }
+
 }

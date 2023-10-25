@@ -66,7 +66,69 @@ public class GameManager : Singleton<GameManager>
 
     public void TogglePauseState(PlayerController newFocusedPlayerController)
     {
+        focusedPlayerController = newFocusedPlayerController;
+
+        isPaused = !isPaused;
+
+        ToggleTimeScale();
+
+        UpdateActivePlayerInputs();
+
+        SwitchFocusedPlayerControlScheme();
+
+        UpdateUIMenu();
+
     }
+
+    void UpdateActivePlayerInputs()
+    {
+        for (int i = 0; i < activePlayerControllers.Count; i++)
+        {
+            if (activePlayerControllers[i] != focusedPlayerController)
+            {
+                activePlayerControllers[i].SetInputActiveState(isPaused);
+            }
+
+        }
+    }
+
+    void SwitchFocusedPlayerControlScheme()
+    {
+        switch (isPaused)
+        {
+            case true:
+                focusedPlayerController.EnablePauseMenuControls();
+                break;
+
+            case false:
+                focusedPlayerController.EnableGameplayControls();
+                break;
+        }
+    }
+
+    void UpdateUIMenu()
+    {
+        //UIManager.Instance.UpdateUIMenuState(isPaused);
+    }
+
+    void ToggleTimeScale()
+    {
+        float newTimeScale = 0f;
+
+        switch (isPaused)
+        {
+            case true:
+                newTimeScale = 0f;
+                break;
+
+            case false:
+                newTimeScale = 1f;
+                break;
+        }
+
+        Time.timeScale = newTimeScale;
+    }
+
 
 
     // Spawn Utilities

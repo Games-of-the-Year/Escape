@@ -39,11 +39,34 @@ public class PlayerMovementBehaviour : MonoBehaviour
 
     private void MoveThePlayer()
     {
-        Vector3 movement;
+        Vector3 movement = CameraDirection(movementDirection) * movementSpeed * Time.deltaTime;
+        playerRigidbody.MovePosition(transform.position + movement);
     }
 
     private void TurnThePlayer()
     {
-        throw new NotImplementedException();
+        if (movementDirection.sqrMagnitude > 0.01f)
+        {
+
+            Quaternion rotation = Quaternion.Slerp(playerRigidbody.rotation,
+                                                 Quaternion.LookRotation(CameraDirection(movementDirection)),
+                                                 turnSpeed);
+
+            playerRigidbody.MoveRotation(rotation);
+
+        }
     }
+
+    Vector3 CameraDirection(Vector3 movementDirection)
+    {
+        var cameraForward = mainCamera.transform.forward;
+        var cameraRight = mainCamera.transform.right;
+
+        cameraForward.y = 0f;
+        cameraRight.y = 0f;
+
+        return cameraForward * movementDirection.z + cameraRight * movementDirection.x;
+
+    }
+
 }
