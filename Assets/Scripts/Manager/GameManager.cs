@@ -1,18 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions;
 using UnityEngine.InputSystem;
 
 public class GameManager : Singleton<GameManager>
 {
     // Local Multiplayer
     public GameObject[] playerPrefab = new GameObject[2];
+    public int numberOfPlayers = 2;
 
     public Transform spawnRingCenter;
     public float spawnRingRadius;
 
     // Spawned Players
-    private int numberOfPlayers = 2;
     private List<PlayerController> activePlayerControllers;
     private bool isPaused;
     private PlayerController focusedPlayerController;
@@ -21,11 +22,11 @@ public class GameManager : Singleton<GameManager>
     {
         isPaused = false;
 
-        SetupOnGameState();
+        SetupBasedOnGameState();
         SetupUI();
     }
 
-    private void SetupOnGameState()
+    private void SetupBasedOnGameState()
     {
         SpawnPlayers();
 
@@ -67,10 +68,13 @@ public class GameManager : Singleton<GameManager>
     {
     }
 
+
     // Spawn Utilities
 
     Vector3 CalculatePositionInRing(int positionID, int numberOfPlayers)
     {
+        Assert.IsTrue(numberOfPlayers == 2);
+
         float angle = (positionID) * Mathf.PI * 2 / numberOfPlayers;
         float x = Mathf.Cos(angle) * spawnRingRadius;
         float z = Mathf.Sin(angle) * spawnRingRadius;

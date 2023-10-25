@@ -12,37 +12,49 @@ public class PlayerController : MonoBehaviour
 
     [Header("Sub Behaviours")]
     public PlayerMovementBehaviour movementBehaviour;
+    public 
 
-    private Rigidbody rb;
-    private PlayerInput playerInput;
-
-    private Vector3 movement;
-    private bool isMoving;
-
-    [SerializeField] private float speed = 10f;
+    [Header("Input Settings")]
+    public PlayerInput playerInput;
+    public float movementSmoothingSpeed = 10f;
+    private Vector3 rawInputMovement;
     public Vector3 smoothInputMovement;
+    //private Rigidbody rb;
+
+    private string actionMapPlayer = "Player";
+    private string actionMapUI = "UI";
 
     //Current Control Scheme
     private string currentControlScheme;
 
+    private bool isMoving;
+
+
+    // ゲームのセットアップ時にGameManagerから呼び出される
     public void SetupPlayer(int playerID)
     {
         this.playerID = playerID;
 
         currentControlScheme = playerInput.currentControlScheme;
 
+        PlayerMovementBehaviour.SetupBehaviour();
+
     }
 
-    private void Awake()
+
+    // Input System
+
+    public void OnMovement(InputAction.CallbackContext value)
     {
-        TryGetComponent(out rb);
-        TryGetComponent(out playerInput);
+        Vector2 inputMovement = value.ReadValue<Vector2>();
+        rawInputMovement = new Vector3(inputMovement.x, 0, inputMovement.y);
     }
 
-    public void OnMove(InputAction.CallbackContext context)
+    public void OnJumping(InputAction.CallbackContext value)
     {
-        var value = context.ReadValue<Vector2>();
-        movement = new Vector3(value.x, 0, value.y);
+        if (value.started)
+        {
+        }
     }
 
     void Update()
@@ -59,6 +71,6 @@ public class PlayerController : MonoBehaviour
 
     private void UpdatePlayerMovement()
     {
-        movementBehaviour
+        //movementBehaviour
     }
 }
