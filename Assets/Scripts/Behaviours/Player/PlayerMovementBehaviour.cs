@@ -5,7 +5,26 @@ using UnityEngine;
 
 public class PlayerMovementBehaviour : MonoBehaviour
 {
+    [Header("Component References")]
+    public Rigidbody playerRigidbody;
+
+    [Header("Movement Settings")]
+    public float movementSpeed = 3f;
+    public float turnSpeed = 0.1f;
+
+    private Camera mainCamera;
     private Vector3 movementDirection;
+
+
+    public void SetupBehaviour()
+    {
+        SetGameplayCamera();
+    }
+
+    void SetGameplayCamera()
+    {
+        mainCamera = CameraManager.Instance.GetGameplayCamera();
+    }
 
     public void UpdateMovementData(Vector3 newMovementDirection)
     {

@@ -4,15 +4,25 @@ using UnityEngine;
 
 public class PlayerAnimationBehaviour : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [Header("Component References")]
+    public Animator playerAnimator;
+
+    //Animation String IDs
+    private int playerMovementAnimationID;
+
+    public void SetupBehaviour()
     {
-        
+        SetupAnimationIDs();
     }
 
-    // Update is called once per frame
-    void Update()
+    void SetupAnimationIDs()
     {
-        
+        playerMovementAnimationID = Animator.StringToHash("Movement");
     }
+    public void UpdateMovementAnimation(float movementBlendValue)
+    {
+        playerAnimator.SetFloat(playerMovementAnimationID, movementBlendValue);
+    }
+
+
 }

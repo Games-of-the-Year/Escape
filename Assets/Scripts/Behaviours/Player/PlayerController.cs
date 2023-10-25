@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Sub Behaviours")]
     public PlayerMovementBehaviour movementBehaviour;
-    public 
+    public PlayerAnimationBehaviour animationBehaviour;
 
     [Header("Input Settings")]
     public PlayerInput playerInput;
@@ -37,8 +37,8 @@ public class PlayerController : MonoBehaviour
 
         currentControlScheme = playerInput.currentControlScheme;
 
-        PlayerMovementBehaviour.SetupBehaviour();
-
+        movementBehaviour.SetupBehaviour();
+        animationBehaviour.SetupBehaviour();
     }
 
 
@@ -50,27 +50,47 @@ public class PlayerController : MonoBehaviour
         rawInputMovement = new Vector3(inputMovement.x, 0, inputMovement.y);
     }
 
-    public void OnJumping(InputAction.CallbackContext value)
+    public void OnTogglePause(InputAction.CallbackContext value)
     {
         if (value.started)
         {
+            GameManager.Instance.TogglePauseState(this);
         }
     }
+
 
     void Update()
     {
         CalculateMovementInputSmoothing();
         UpdatePlayerMovement();
+        UpdatePlayerAnimationMovement();
     }
-
 
     private void CalculateMovementInputSmoothing()
     {
-        smoothInputMovement = Vector3.Lerp(smoothInputMovement, movement, Time.deltaTime * speed);
+        smoothInputMovement = Vector3.Lerp(smoothInputMovement, rawInputMovement, Time.deltaTime * movementSmoothingSpeed);
     }
 
     private void UpdatePlayerMovement()
     {
-        //movementBehaviour
+        movementBehaviour.UpdateMovementData(smoothInputMovement);
+    }
+
+    void UpdatePlayerAnimationMovement()
+    {
+        animationBehaviour.UpdateMovementAnimation(smoothInputMovement.magnitude);
+    }
+
+    public void SetInputActiveState(bool gameIsPaused)
+    {
+        switch (gameIsPaused)
+        {
+            case true:
+                playerInput.SwitchCurrentActionMap(actionMapPlayer);
+                break;
+            case false:
+                playerInput.SwitchCurrentActionMap(actionMapUI);
+                break;
+        }
     }
 }
