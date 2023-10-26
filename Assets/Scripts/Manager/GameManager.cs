@@ -23,7 +23,7 @@ public class GameManager : Singleton<GameManager>
         isPaused = false;
 
         SetupBasedOnGameState();
-        SetupUI();
+        //SetupUI();
     }
 
     private void SetupBasedOnGameState()
@@ -138,7 +138,7 @@ public class GameManager : Singleton<GameManager>
         float angle = (positionID) * Mathf.PI * 2 / numberOfPlayers;
         float x = Mathf.Cos(angle) * spawnRingRadius;
         float z = Mathf.Sin(angle) * spawnRingRadius;
-        return spawnRingCenter.position + new Vector3(x, 0, z);
+        return spawnRingCenter.position + new Vector3(x, 2, z);
     }
 
     Quaternion CalculateRotation()

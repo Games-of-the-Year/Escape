@@ -6,16 +6,16 @@ public class CameraManager : Singleton<CameraManager>
 {
     [Header("Component References")]
     public GameObject gameplayCameraObject;
-    public GameObject uiOverlayCameraObject;
+    //public GameObject uiOverlayCameraObject;
 
-    [Header("Virtual Cameras")]
-    public GameObject VCamStationaryObject;
-    public GameObject VCamSinglePlayerOrbitObject;
+    //[Header("Virtual Cameras")]
+    //public GameObject VCamStationaryObject;
+    //public GameObject VCamSinglePlayerOrbitObject;
 
     public void SetupManager()
     {
         SetCameraObjectNewState(gameplayCameraObject, true);
-        SetCameraObjectNewState(uiOverlayCameraObject, false);
+        //SetCameraObjectNewState(uiOverlayCameraObject, false);
     }
 
     void SetCameraObjectNewState(GameObject cameraObject, bool newState)
