@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class PlayerAnimationBehaviour : MonoBehaviour
 {
@@ -22,6 +23,7 @@ public class PlayerAnimationBehaviour : MonoBehaviour
     public void UpdateMovementAnimation(float movementBlendValue)
     {
         playerAnimator.SetFloat(playerMovementAnimationID, movementBlendValue);
+        Debug.Log("value" + movementBlendValue);
     }
 
 
