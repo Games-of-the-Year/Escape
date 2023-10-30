@@ -143,6 +143,6 @@ public class GameManager : Singleton<GameManager>
 
     Quaternion CalculateRotation()
     {
-        return Quaternion.Euler(new Vector3(0, Random.Range(0, 360), 0));
+        return Quaternion.Euler(new Vector3(0, 0, 0));
     }
 }
