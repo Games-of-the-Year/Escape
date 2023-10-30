@@ -138,7 +138,7 @@ public class GameManager : Singleton<GameManager>
         float angle = (positionID) * Mathf.PI * 2 / numberOfPlayers;
         float x = Mathf.Cos(angle) * spawnRingRadius;
         float z = Mathf.Sin(angle) * spawnRingRadius;
-        return spawnRingCenter.position + new Vector3(x, 1.35f, z);
+        return spawnRingCenter.position + new Vector3(x, 0f, z);
     }
 
     Quaternion CalculateRotation()
