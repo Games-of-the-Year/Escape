@@ -20,15 +20,13 @@ public class PlayerController : MonoBehaviour
     public float movementSmoothingSpeed = 1f;
     private Vector3 rawInputMovement;
     public Vector3 smoothInputMovement;
-    //private Rigidbody rb;
+    private Vector3 cameraRelativeInputMovement;
 
     private string actionMapPlayer = "Player";
     private string actionMapUI = "UI";
 
     //Current Control Scheme
     private string currentControlScheme;
-
-    //private bool isMoving;
 
 
     // ゲームのセットアップ時にGameManagerから呼び出される
@@ -49,6 +47,11 @@ public class PlayerController : MonoBehaviour
     {
         Vector2 inputMovement = value.ReadValue<Vector2>();
         rawInputMovement = new Vector3(inputMovement.x, 0, inputMovement.y);
+    }
+
+    public void OnCameraRotate(InputAction.CallbackContext value)
+    {
+
     }
 
     //public void OnTogglePause(InputAction.CallbackContext value)
