@@ -5,6 +5,7 @@ using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.EventSystems;
+using System.Globalization;
 
 public class PlayerController : MonoBehaviour
 {
@@ -14,19 +15,23 @@ public class PlayerController : MonoBehaviour
     [Header("Sub Behaviours")]
     public PlayerMovementBehaviour movementBehaviour;
     public PlayerAnimationBehaviour animationBehaviour;
+    public CameraRotaionBehaviour cameraRotaionBehaviour;
 
     [Header("Input Settings")]
     public PlayerInput playerInput;
     public float movementSmoothingSpeed = 1f;
     private Vector3 rawInputMovement;
     public Vector3 smoothInputMovement;
-    private Vector3 cameraRelativeInputMovement;
+    private Vector3 cameraRotation;
 
     private string actionMapPlayer = "Player";
     private string actionMapUI = "UI";
 
     //Current Control Scheme
     private string currentControlScheme;
+
+    // camera
+    [SerializeField] Camera childCamera;
 
 
     // ゲームのセットアップ時にGameManagerから呼び出される
@@ -51,7 +56,8 @@ public class PlayerController : MonoBehaviour
 
     public void OnCameraRotate(InputAction.CallbackContext value)
     {
-
+        Vector2 inputMovement = value.ReadValue<Vector2>();
+        cameraRotation = new Vector3(inputMovement.y, inputMovement.x, 0);
     }
 
     //public void OnTogglePause(InputAction.CallbackContext value)
@@ -66,6 +72,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         CalculateMovementInputSmoothing();
+        UpdateCameraRotation();
         UpdatePlayerMovement();
         UpdatePlayerAnimationMovement();
     }
@@ -73,6 +80,11 @@ public class PlayerController : MonoBehaviour
     private void CalculateMovementInputSmoothing()
     {
         smoothInputMovement = Vector3.Lerp(smoothInputMovement, rawInputMovement, Time.deltaTime * movementSmoothingSpeed);
+    }
+
+    private void UpdateCameraRotation()
+    {
+        cameraRotaionBehaviour.UpdateRotaion(cameraRotation);
     }
 
     private void UpdatePlayerMovement()
