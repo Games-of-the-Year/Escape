@@ -59,7 +59,6 @@ public class GameManager : Singleton<GameManager>
         for (int i = 0; i < activePlayerControllers.Count; i++)
         {
             activePlayerControllers[i].SetupPlayer(i);
-            Debug.Log(i);
         }
     }
 
