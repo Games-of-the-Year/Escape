@@ -30,21 +30,22 @@ public class GameManager : Singleton<GameManager>
     {
         SpawnPlayers();
 
-        SetupActivePlayers();
     }
 
     private void SpawnPlayers()
     {
         activePlayerControllers = new List<PlayerController>();
+        Debug.Log("SpawnPlayers1");
+        //for (int i = 0; i < numberOfPlayers; i++)
+        //{
+        //    Vector3 spawnPosition = CalculatePositionInRing(i, numberOfPlayers);
+        //    Quaternion spawnRotation = CalculateRotation();
 
-        for (int i = 0; i < numberOfPlayers; i++)
-        {
-            Vector3 spawnPosition = CalculatePositionInRing(i, numberOfPlayers);
-            Quaternion spawnRotation = CalculateRotation();
+        //    GameObject spawnedPlayer = Instantiate(playerPrefab[i], spawnPosition, spawnRotation) as GameObject;
+        //    AddPlayerToActivePlayerList(spawnedPlayer.GetComponent<PlayerController>());
+        //}
 
-            GameObject spawnedPlayer = Instantiate(playerPrefab[i], spawnPosition, spawnRotation) as GameObject;
-            AddPlayerToActivePlayerList(spawnedPlayer.GetComponent<PlayerController>());
-        }
+
     }
 
     private void AddPlayerToActivePlayerList(PlayerController newPlayer)
@@ -54,13 +55,25 @@ public class GameManager : Singleton<GameManager>
 
     private void SetupActivePlayers()
     {
+        Debug.Log("SetupActivePlayers2");
         for (int i = 0; i < activePlayerControllers.Count; i++)
         {
             activePlayerControllers[i].SetupPlayer(i);
+            Debug.Log(i);
         }
     }
 
 
+    // Player Input
+    public void OnPlayerJoined(PlayerInput input)
+    {
+        Debug.Log("OnPlayerJoined0");
+        GameObject player = input.gameObject;
+        AddPlayerToActivePlayerList(player.GetComponent<PlayerController>());
+        SetupActivePlayers();
+
+
+    }
 
     //public void TogglePauseState(PlayerController newFocusedPlayerController)
     //{
@@ -106,7 +119,7 @@ public class GameManager : Singleton<GameManager>
 
     //void UpdateUIMenu()
     //{
-        //UIManager.Instance.UpdateUIMenuState(isPaused);
+    //UIManager.Instance.UpdateUIMenuState(isPaused);
     //}
 
     //void ToggleTimeScale()

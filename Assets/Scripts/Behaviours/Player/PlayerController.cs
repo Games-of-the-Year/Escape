@@ -37,6 +37,7 @@ public class PlayerController : MonoBehaviour
     // ゲームのセットアップ時にGameManagerから呼び出される
     public void SetupPlayer(int playerID)
     {
+        Debug.Log("SetupPlayer");
         this.playerID = playerID;
 
         currentControlScheme = playerInput.currentControlScheme;
@@ -51,7 +52,7 @@ public class PlayerController : MonoBehaviour
     public void OnMovement(InputAction.CallbackContext value)
     {
         Vector2 inputMovement = value.ReadValue<Vector2>();
-        rawInputMovement = new Vector3(inputMovement.x, 0, inputMovement.y);
+        rawInputMovement = new Vector3(inputMovement.x, 0, inputMovement.y).normalized;
     }
 
     public void OnCameraRotate(InputAction.CallbackContext value)

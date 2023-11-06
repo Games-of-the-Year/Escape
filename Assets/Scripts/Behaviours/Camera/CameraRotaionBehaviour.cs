@@ -11,10 +11,10 @@ public class CameraRotaionBehaviour : MonoBehaviour
     private float rotateSpeed = 1f;
 
     // 最小最大の回転角度
-    private float minXRotation = -40f;
-    private float maxXRotation = 40f;
-    private float minYRotation = -40f;
-    private float maxYRotation = 40f;
+    private float minXRotation = -50f;
+    private float maxXRotation = 50f;
+    private float minYRotation = -50f;
+    private float maxYRotation = 50f;
 
     private void Start()
     {

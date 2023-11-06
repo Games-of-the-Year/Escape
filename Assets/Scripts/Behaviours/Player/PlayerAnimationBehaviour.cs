@@ -19,11 +19,10 @@ public class PlayerAnimationBehaviour : MonoBehaviour
     void SetupAnimationIDs()
     {
         playerMovementAnimationID = Animator.StringToHash("Movement");
+        Debug.Log(playerMovementAnimationID);
     }
     public void UpdateMovementAnimation(float movementBlendValue)
     {
         playerAnimator.SetFloat(playerMovementAnimationID, movementBlendValue);
     }
-
-
 }
