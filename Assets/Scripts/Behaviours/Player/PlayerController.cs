@@ -37,7 +37,6 @@ public class PlayerController : MonoBehaviour
     // ゲームのセットアップ時にGameManagerから呼び出される
     public void SetupPlayer(int playerID)
     {
-        Debug.Log("SetupPlayer");
         this.playerID = playerID;
 
         currentControlScheme = playerInput.currentControlScheme;

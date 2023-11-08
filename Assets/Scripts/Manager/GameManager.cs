@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 public class GameManager : Singleton<GameManager>
 {
     // Local Multiplayer
-    public GameObject[] playerPrefab = new GameObject[2];
+    //public GameObject[] playerPrefab = new GameObject[2];
     public int numberOfPlayers = 2;
 
     public Transform spawnRingCenter;
@@ -18,12 +18,24 @@ public class GameManager : Singleton<GameManager>
     //private bool isPaused;
     private PlayerController focusedPlayerController;
 
+    [SerializeField] private PlayerInputManager inputManager;
+
     void Start()
     {
         //isPaused = false;
 
         SetupBasedOnGameState();
         //SetupUI();
+    }
+
+    private void OnEnable()
+    {
+        inputManager.onPlayerJoined += OnPlayerJoined;
+    }
+
+    private void OnDisable()
+    {
+        inputManager.onPlayerJoined -= OnPlayerJoined;
     }
 
     private void SetupBasedOnGameState()
@@ -35,7 +47,6 @@ public class GameManager : Singleton<GameManager>
     private void SpawnPlayers()
     {
         activePlayerControllers = new List<PlayerController>();
-        Debug.Log("SpawnPlayers1");
         //for (int i = 0; i < numberOfPlayers; i++)
         //{
         //    Vector3 spawnPosition = CalculatePositionInRing(i, numberOfPlayers);
@@ -55,7 +66,6 @@ public class GameManager : Singleton<GameManager>
 
     private void SetupActivePlayers()
     {
-        Debug.Log("SetupActivePlayers2");
         for (int i = 0; i < activePlayerControllers.Count; i++)
         {
             activePlayerControllers[i].SetupPlayer(i);
@@ -66,12 +76,9 @@ public class GameManager : Singleton<GameManager>
     // Player Input
     public void OnPlayerJoined(PlayerInput input)
     {
-        Debug.Log("OnPlayerJoined0");
         GameObject player = input.gameObject;
         AddPlayerToActivePlayerList(player.GetComponent<PlayerController>());
         SetupActivePlayers();
-
-
     }
 
     //public void TogglePauseState(PlayerController newFocusedPlayerController)
