@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -55,6 +56,7 @@ public class PlayerMovementBehaviour : MonoBehaviour
         //Vector3 movement = CameraDirection(movementDirection) * movementSpeed * Time.deltaTime;
         Vector3 movement = movementDirection * movementSpeed * Time.deltaTime;
         playerRigidbody.MovePosition(transform.position + movement);
+        Debug.Log("Moving: " + movement);
     }
 
     private void TurnThePlayer()
