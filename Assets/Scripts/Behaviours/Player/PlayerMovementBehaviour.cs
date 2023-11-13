@@ -53,10 +53,10 @@ public class PlayerMovementBehaviour : MonoBehaviour
         //{
         //transform.rotation = Quaternion.LookRotation(movementDirection, Vector3.up);
         //}
-        //Vector3 movement = CameraDirection(movementDirection) * movementSpeed * Time.deltaTime;
-        Vector3 movement = movementDirection * movementSpeed * Time.deltaTime;
+        Vector3 movement = CameraDirection(movementDirection) * movementSpeed * Time.deltaTime;
+
+        //Vector3 movement = movementDirection * movementSpeed * Time.deltaTime;
         playerRigidbody.MovePosition(transform.position + movement);
-        Debug.Log("Moving: " + movement);
     }
 
     private void TurnThePlayer()
