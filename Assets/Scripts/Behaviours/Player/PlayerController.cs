@@ -33,6 +33,10 @@ public class PlayerController : MonoBehaviour
     // camera
     [SerializeField] Camera childCamera;
 
+    private void Start()
+    {
+        DontDestroyOnLoad(this.gameObject);
+    }
 
     // ゲームのセットアップ時にGameManagerから呼び出される
     public void SetupPlayer(int playerID)

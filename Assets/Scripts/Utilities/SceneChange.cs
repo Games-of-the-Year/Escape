@@ -1,18 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SceneChange : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private int sceneToChangeTo = 0;
+    [SerializeField] Vector3 spawnPoint = new Vector3(0, 0, 0);
 
-    // Update is called once per frame
-    void Update()
+    public void OnTriggerEnter(Collider other)
     {
-        
+        SceneManager.LoadScene(sceneToChangeTo);
+
+        GameObject nagito = GameObject.Find("Nagito2(Clone)");
+        if (nagito != null)
+        {
+            nagito.transform.position = spawnPoint;
+        }
     }
 }
