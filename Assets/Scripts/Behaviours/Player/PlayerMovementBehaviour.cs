@@ -49,13 +49,7 @@ public class PlayerMovementBehaviour : MonoBehaviour
 
     private void MoveThePlayer()
     {
-        //if (movementDirection.magnitude > 0.01f)
-        //{
-        //transform.rotation = Quaternion.LookRotation(movementDirection, Vector3.up);
-        //}
         Vector3 movement = CameraDirection(movementDirection) * movementSpeed * Time.deltaTime;
-
-        //Vector3 movement = movementDirection * movementSpeed * Time.deltaTime;
         playerRigidbody.MovePosition(transform.position + movement);
     }
 

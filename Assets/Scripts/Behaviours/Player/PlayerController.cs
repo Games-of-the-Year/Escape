@@ -55,7 +55,7 @@ public class PlayerController : MonoBehaviour
     public void OnMovement(InputAction.CallbackContext value)
     {
         Vector2 inputMovement = value.ReadValue<Vector2>();
-        rawInputMovement = new Vector3(inputMovement.x, 0, inputMovement.y).normalized;
+        rawInputMovement = new Vector3(inputMovement.x, 0, inputMovement.y)/*.normalized*/;
     }
 
     public void OnCameraRotate(InputAction.CallbackContext value)

@@ -431,7 +431,7 @@ MonoBehaviour:
   animationBehaviour: {fileID: 7569944117492894157}
   cameraRotaionBehaviour: {fileID: 2376131694225095508}
   playerInput: {fileID: 457339425371048765}
-  movementSmoothingSpeed: 0.5
+  movementSmoothingSpeed: 5
   smoothInputMovement: {x: 0, y: 0, z: 0}
   childCamera: {fileID: 1015624432115929002}
 --- !u!114 &457339425371048765
@@ -573,7 +573,7 @@ Rigidbody:
   m_GameObject: {fileID: 1799138418030477789}
   serializedVersion: 4
   m_Mass: 1
-  m_Drag: 1
+  m_Drag: 3
   m_AngularDrag: 1000
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
