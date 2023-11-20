@@ -1,3 +1,4 @@
+using Cinemachine.Utility;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Search;
@@ -15,6 +16,12 @@ public class CameraRotaionBehaviour : MonoBehaviour
     private float maxXRotation = 50f;
     private float minYRotation = -50f;
     private float maxYRotation = 50f;
+
+    // 11/20
+    [SerializeField] private Transform target;
+    private float distance = 5.0f;
+    private float height = 1.0f;
+    private float rotationSpeed = 3.0f;
 
     private void Start()
     {
@@ -60,4 +67,18 @@ public class CameraRotaionBehaviour : MonoBehaviour
         gameObject.transform.localEulerAngles = angle;
     }
 
+    public void RotateTheCamera(Vector2 inputValue)
+    {
+        float horizontalInput = inputValue.x * rotationSpeed;
+        float verticalInput = inputValue.y * rotationSpeed * 5.0f;
+
+        transform.RotateAround(target.position, Vector3.up, horizontalInput);
+        transform.RotateAround(target.position, transform.right, -verticalInput);
+
+        Vector3 disiredPosition = target.position - transform.forward * distance;
+        disiredPosition.y = target.position.y + height;
+        transform.position = disiredPosition;
+
+        transform.LookAt(target.position);
+    }
 }

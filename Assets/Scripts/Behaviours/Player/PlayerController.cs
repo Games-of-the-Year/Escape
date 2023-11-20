@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
     public float movementSmoothingSpeed = 1f;
     private Vector3 rawInputMovement;
     public Vector3 smoothInputMovement;
-    private Vector3 cameraRotation;
+    private Vector2 cameraRotation;
 
     private string actionMapPlayer = "Player";
     private string actionMapUI = "UI";
@@ -60,8 +60,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnCameraRotate(InputAction.CallbackContext value)
     {
-        Vector2 inputMovement = value.ReadValue<Vector2>();
-        cameraRotation = new Vector3(inputMovement.y, inputMovement.x, 0);
+        cameraRotation = value.ReadValue<Vector2>();
     }
 
     //public void OnTogglePause(InputAction.CallbackContext value)
@@ -88,7 +87,8 @@ public class PlayerController : MonoBehaviour
 
     private void UpdateCameraRotation()
     {
-        cameraRotaionBehaviour.UpdateRotaion(cameraRotation);
+        //cameraRotaionBehaviour.(cameraRotation);
+        cameraRotaionBehaviour.RotateTheCamera(cameraRotation);
     }
 
     private void UpdatePlayerMovement()

@@ -55,20 +55,19 @@ public class PlayerMovementBehaviour : MonoBehaviour
 
     private void TurnThePlayer()
     {
-        if (movementDirection.magnitude > 0.01f)
-        {
-            targetRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
-        }
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, turnSpeed * Time.deltaTime);
+        //var rotationSpeed = 600 * Time.deltaTime;
+        //if (movementDirection.normalized.magnitude > 0.5f)
+        //{
+        //    targetRotation = Quaternion.LookRotation(movementDirection.normalized, Vector3.up);
+        //}
+        //transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed);
+
         //if (movementDirection.sqrMagnitude > 0.01f)
         //{
-
         //    Quaternion rotation = Quaternion.Slerp(playerRigidbody.rotation,
         //                                         Quaternion.LookRotation(CameraDirection(movementDirection)),
         //                                         turnSpeed);
-
         //    playerRigidbody.MoveRotation(rotation);
-
         //}
     }
 
