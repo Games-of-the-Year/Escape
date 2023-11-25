@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,56 +8,32 @@ using UnityEngine.InputSystem;
 public class GameManager : Singleton<GameManager>
 {
     // Local Multiplayer
-    //public GameObject[] playerPrefab = new GameObject[2];
-    public int numberOfPlayers = 2;
-
-    public Transform spawnRingCenter;
-    public float spawnRingRadius;
+    public GameObject player;
 
     // Spawned Players
     private List<PlayerController> activePlayerControllers;
-    //private bool isPaused;
+    private bool isPaused;
     private PlayerController focusedPlayerController;
-
-    [SerializeField] private PlayerInputManager inputManager;
 
     void Start()
     {
-        //isPaused = false;
+        isPaused = false;
 
         SetupBasedOnGameState();
         //SetupUI();
     }
 
-    private void OnEnable()
-    {
-        inputManager.onPlayerJoined += OnPlayerJoined;
-    }
-
-    private void OnDisable()
-    {
-        inputManager.onPlayerJoined -= OnPlayerJoined;
-    }
-
     private void SetupBasedOnGameState()
     {
-        SpawnPlayers();
-
-    }
-
-    private void SpawnPlayers()
-    {
         activePlayerControllers = new List<PlayerController>();
-        //for (int i = 0; i < numberOfPlayers; i++)
-        //{
-        //    Vector3 spawnPosition = CalculatePositionInRing(i, numberOfPlayers);
-        //    Quaternion spawnRotation = CalculateRotation();
 
-        //    GameObject spawnedPlayer = Instantiate(playerPrefab[i], spawnPosition, spawnRotation) as GameObject;
-        //    AddPlayerToActivePlayerList(spawnedPlayer.GetComponent<PlayerController>());
-        //}
+        if (player == true)
+        {
+            AddPlayerToActivePlayerList(player.GetComponent<PlayerController>());
+        }
 
-
+        SetupActivePlayers();
+        SetupSinglePlayerCamera();
     }
 
     private void AddPlayerToActivePlayerList(PlayerController newPlayer)
@@ -72,96 +49,13 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
-
-    // Player Input
-    public void OnPlayerJoined(PlayerInput input)
+    void SetupUI()
     {
-        GameObject player = input.gameObject;
-        AddPlayerToActivePlayerList(player.GetComponent<PlayerController>());
-        SetupActivePlayers();
+        UIManager.Instance.SetupManager();
     }
 
-    //public void TogglePauseState(PlayerController newFocusedPlayerController)
-    //{
-    //    focusedPlayerController = newFocusedPlayerController;
-
-    //    isPaused = !isPaused;
-
-    //    ToggleTimeScale();
-
-    //    UpdateActivePlayerInputs();
-
-    //    SwitchFocusedPlayerControlScheme();
-
-    //    UpdateUIMenu();
-
-    //}
-
-    //void UpdateActivePlayerInputs()
-    //{
-    //    for (int i = 0; i < activePlayerControllers.Count; i++)
-    //    {
-    //        if (activePlayerControllers[i] != focusedPlayerController)
-    //        {
-    //            activePlayerControllers[i].SetInputActiveState(isPaused);
-    //        }
-
-    //    }
-    //}
-
-    //void SwitchFocusedPlayerControlScheme()
-    //{
-    //    switch (isPaused)
-    //    {
-    //        case true:
-    //            focusedPlayerController.EnablePauseMenuControls();
-    //            break;
-
-    //        case false:
-    //            focusedPlayerController.EnableGameplayControls();
-    //            break;
-    //    }
-    //}
-
-    //void UpdateUIMenu()
-    //{
-    //UIManager.Instance.UpdateUIMenuState(isPaused);
-    //}
-
-    //void ToggleTimeScale()
-    //{
-    //    float newTimeScale = 0f;
-
-    //    switch (isPaused)
-    //    {
-    //        case true:
-    //            newTimeScale = 0f;
-    //            break;
-
-    //        case false:
-    //            newTimeScale = 1f;
-    //            break;
-    //    }
-
-    //    Time.timeScale = newTimeScale;
-    //}
-
-
-
-    // Spawn Utilities
-
-    Vector3 CalculatePositionInRing(int positionID, int numberOfPlayers)
+    private void SetupSinglePlayerCamera()
     {
-        Assert.IsTrue(numberOfPlayers == 2);
-
-        float angle = (positionID) * Mathf.PI * 2 / numberOfPlayers;
-        float x = Mathf.Cos(angle) * spawnRingRadius;
-        float z = Mathf.Sin(angle) * spawnRingRadius;
-        return spawnRingCenter.position + new Vector3(x, 0f, z);
-    }
-
-    Quaternion CalculateRotation()
-    {
-        return Quaternion.Euler(new Vector3(0, 0, 0));
+        CameraManager.Instance.SetupSinglePlayerCamera();
     }
 }

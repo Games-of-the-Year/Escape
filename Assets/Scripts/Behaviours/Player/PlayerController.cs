@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     [Header("Sub Behaviours")]
     public PlayerMovementBehaviour movementBehaviour;
     public PlayerAnimationBehaviour animationBehaviour;
-    public CameraRotaionBehaviour cameraRotaionBehaviour;
+    //public CameraRotaionBehaviour cameraRotaionBehaviour;
 
     [Header("Input Settings")]
     public PlayerInput playerInput;
@@ -88,7 +88,7 @@ public class PlayerController : MonoBehaviour
     private void UpdateCameraRotation()
     {
         //cameraRotaionBehaviour.(cameraRotation);
-        cameraRotaionBehaviour.RotateTheCamera(cameraRotation);
+        //cameraRotaionBehaviour.RotateTheCamera(cameraRotation);
     }
 
     private void UpdatePlayerMovement()

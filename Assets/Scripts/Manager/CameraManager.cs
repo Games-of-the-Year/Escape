@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,16 +7,20 @@ public class CameraManager : Singleton<CameraManager>
 {
     [Header("Component References")]
     public GameObject gameplayCameraObject;
-    //public GameObject uiOverlayCameraObject;
+    public GameObject uiOverlayCameraObject;
 
-    //[Header("Virtual Cameras")]
-    //public GameObject VCamStationaryObject;
-    //public GameObject VCamSinglePlayerOrbitObject;
+    [Header("Virtual Camera")]
+    public GameObject VCamSinglePlayerOrbitObject;
 
     public void SetupManager()
     {
         SetCameraObjectNewState(gameplayCameraObject, true);
-        //SetCameraObjectNewState(uiOverlayCameraObject, false);
+        SetCameraObjectNewState(uiOverlayCameraObject, false);
+    }
+
+    public void SetupSinglePlayerCamera()
+    {
+        SetCameraObjectNewState(VCamSinglePlayerOrbitObject, true);
     }
 
     void SetCameraObjectNewState(GameObject cameraObject, bool newState)
