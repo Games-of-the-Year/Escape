@@ -14,8 +14,7 @@ public class PlayerMovementBehaviour : MonoBehaviour
     public float movementSpeed = 3f;
     public float turnSpeed = 0.1f;
 
-    public Camera playerCam;
-    public Camera UICam;
+    private Camera mainCamera;
     private Vector3 movementDirection;
 
     private Quaternion targetRotation;
@@ -32,8 +31,7 @@ public class PlayerMovementBehaviour : MonoBehaviour
 
     void SetGameplayCamera()
     {
-        playerCam.enabled = true;
-        UICam.enabled = false;
+        mainCamera = CameraManager.Instance.GetGameplayCamera();
     }
 
     public void UpdateMovementData(Vector3 newMovementDirection)
@@ -62,19 +60,19 @@ public class PlayerMovementBehaviour : MonoBehaviour
         //}
         //transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed);
 
-        //if (movementDirection.sqrMagnitude > 0.01f)
-        //{
-        //    Quaternion rotation = Quaternion.Slerp(playerRigidbody.rotation,
-        //                                         Quaternion.LookRotation(CameraDirection(movementDirection)),
-        //                                         turnSpeed);
-        //    playerRigidbody.MoveRotation(rotation);
-        //}
+        if (movementDirection.sqrMagnitude > 0.01f)
+        {
+            Quaternion rotation = Quaternion.Slerp(playerRigidbody.rotation,
+                                                 Quaternion.LookRotation(CameraDirection(movementDirection)),
+                                                 turnSpeed);
+            playerRigidbody.MoveRotation(rotation);
+        }
     }
 
     Vector3 CameraDirection(Vector3 movementDirection)
     {
-        var cameraForward = playerCam.transform.forward;
-        var cameraRight = playerCam.transform.right;
+        var cameraForward = mainCamera.transform.forward;
+        var cameraRight = mainCamera.transform.right;
 
         cameraForward.y = 0f;
         cameraRight.y = 0f;
