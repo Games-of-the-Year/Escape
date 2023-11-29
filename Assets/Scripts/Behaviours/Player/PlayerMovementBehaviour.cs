@@ -1,9 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.SceneManagement;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 public class PlayerMovementBehaviour : MonoBehaviour
 {
@@ -41,31 +39,32 @@ public class PlayerMovementBehaviour : MonoBehaviour
 
     private void FixedUpdate()
     {
-        MoveThePlayer();
-        TurnThePlayer();
+        //MoveThePlayer();
+        //TurnThePlayer();
+        playerRigidbody.Move(MoveThePlayer(), TurnThePlayer());
     }
 
-    private void MoveThePlayer()
+
+    Vector3 MoveThePlayer()
     {
         Vector3 movement = CameraDirection(movementDirection) * movementSpeed * Time.deltaTime;
-        playerRigidbody.MovePosition(transform.position + movement);
+        //playerRigidbody.MovePosition(transform.position + movement);
+        return transform.position + movement;
     }
 
-    private void TurnThePlayer()
+    Quaternion TurnThePlayer()
     {
-        //var rotationSpeed = 600 * Time.deltaTime;
-        //if (movementDirection.normalized.magnitude > 0.5f)
-        //{
-        //    targetRotation = Quaternion.LookRotation(movementDirection.normalized, Vector3.up);
-        //}
-        //transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed);
-
         if (movementDirection.sqrMagnitude > 0.01f)
         {
             Quaternion rotation = Quaternion.Slerp(playerRigidbody.rotation,
                                                  Quaternion.LookRotation(CameraDirection(movementDirection)),
                                                  turnSpeed);
-            playerRigidbody.MoveRotation(rotation);
+            //playerRigidbody.MoveRotation(rotation);
+            return rotation;
+        }
+        else
+        {
+            return playerRigidbody.rotation;
         }
     }
 

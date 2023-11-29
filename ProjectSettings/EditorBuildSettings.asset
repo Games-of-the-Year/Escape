@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Classroom.unity
     guid: de3a2d43e71a78c4faa3e20a2fb97865
+  - enabled: 1
+    path: Assets/Scenes/Musicroom.unity
+    guid: d85fa636307150443b8860596ec8c1e3
   m_configObjects: {}

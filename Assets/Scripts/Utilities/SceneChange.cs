@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class SceneChange : MonoBehaviour
 {
     [SerializeField] private int sceneToChangeTo = 0;
-    [SerializeField] Vector3 spawnPoint = new Vector3(0, 0, 0);
+    [SerializeField] private Vector3 spawnPoint;
 
     public void OnTriggerEnter(Collider other)
     {
@@ -16,6 +16,10 @@ public class SceneChange : MonoBehaviour
         if (nagito != null)
         {
             nagito.transform.position = spawnPoint;
+        }
+        else
+        {
+            return;
         }
     }
 }
