@@ -26,10 +26,21 @@ public class PlayerController : MonoBehaviour
     //Current Control Scheme
     private string currentControlScheme;
 
-    private void Start()
+    private static PlayerController instance;
+
+    private void Awake()
     {
-        DontDestroyOnLoad(this.gameObject);
+        if (instance == null)
+        {
+            DontDestroyOnLoad(gameObject);
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
+
 
     // ゲームのセットアップ時にGameManagerから呼び出される
     public void SetupPlayer(int playerID)

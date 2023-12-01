@@ -619,7 +619,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1010181768}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.00057936675, y: 0.99091315, z: 0.004270499, w: -0.13443437}
+  m_LocalRotation: {x: 0.00057936687, y: 0.99091315, z: 0.004270499, w: -0.13443443}
   m_LocalPosition: {x: 2.3986459, y: 2.5, z: 8.674475}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1473,7 +1473,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1629111010}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.0005793668, y: 0.99091315, z: 0.0042705014, w: -0.13443439}
+  m_LocalRotation: {x: 0.00057936704, y: 0.99091315, z: 0.0042705014, w: -0.13443442}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1913,7 +1913,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2102639952}
-  - component: {fileID: 2102639954}
+  - component: {fileID: 2102639953}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -1938,7 +1938,7 @@ Transform:
   - {fileID: 1501059365}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2102639954
+--- !u!114 &2102639953
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1947,7 +1947,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2102639951}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac5a3f890ce2b39479bec7f881051e5e, type: 3}
+  m_Script: {fileID: 11500000, guid: d764ca32b7592934295c4373e7058d24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!33 &60712761482783718
