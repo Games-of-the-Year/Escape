@@ -1,25 +1,67 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.ReorderableList;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class SceneChange : MonoBehaviour
 {
-    [SerializeField] private int sceneToChangeTo = 0;
-    [SerializeField] private Vector3 spawnPoint;
+    //[SerializeField] private int sceneToChangeTo = 1;
+    //[SerializeField] private Vector3 spawnPoint;
 
     public void OnTriggerEnter(Collider other)
     {
-        SceneManager.LoadScene(sceneToChangeTo);
+        Debug.Log("Triggered");
 
-        GameObject nagito = GameObject.Find("Nagito2(Clone)");
-        if (nagito != null)
+        if (other.gameObject.name == "ClassroomFront")
         {
-            nagito.transform.position = spawnPoint;
+            SceneManager.LoadScene(2);
+            transform.position = new Vector3(-9.5f, 0, 11f);
+            transform.rotation = Quaternion.Euler(0, 180, 0);
         }
-        else
+        else if (other.gameObject.name == "ClassroomBack")
         {
-            return;
+            SceneManager.LoadScene(2);
+            transform.position = new Vector3(9.5f, 0, 11f);
+            transform.rotation = Quaternion.Euler(0, 180, 0);
+        }
+        else if (other.gameObject.name == "MusicroomFront")
+        {
+            SceneManager.LoadScene(3);
+            transform.position = new Vector3(-9.5f, 0, 11f);
+            transform.rotation = Quaternion.Euler(0, 180, 0);
+        }
+        else if (other.gameObject.name == "MusicroomBack")
+        {
+            SceneManager.LoadScene(3);
+            transform.position = new Vector3(9.5f, 0, 11f);
+            transform.rotation = Quaternion.Euler(0, 180, 0);
+        }
+        else if (SceneManager.GetActiveScene().name == "Classroom")
+        {
+            if (other.gameObject.name == "Back")
+            {
+                SceneManager.LoadScene(1);
+                transform.position = new Vector3(9.5f, 0, -12f);
+            }
+            else if (other.gameObject.name == "Front")
+            {
+                SceneManager.LoadScene(1);
+                transform.position = new Vector3(-20f, 0, -12f);
+            }
+        }
+        else if (SceneManager.GetActiveScene().name == "Musicroom")
+        {
+            if (other.gameObject.name == "Back")
+            {
+                SceneManager.LoadScene(1);
+                transform.position = new Vector3(8f, 0, 15f);
+            }
+            else if (other.gameObject.name == "Front")
+            {
+                SceneManager.LoadScene(1);
+                transform.position = new Vector3(-20f, 0, -12f);
+            }
         }
     }
 }
