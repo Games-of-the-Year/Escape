@@ -419,10 +419,9 @@ GameObject:
   - component: {fileID: 8619024650814983340}
   - component: {fileID: 756696048109981980}
   - component: {fileID: 9140096057581996538}
-  - component: {fileID: 837893704789837507}
   m_Layer: 0
   m_Name: Nagito2
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -459,11 +458,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementBehaviour: {fileID: 756696048109981980}
   animationBehaviour: {fileID: 7569944117492894157}
-  cameraRotaionBehaviour: {fileID: 2376131694225095508}
   playerInput: {fileID: 457339425371048765}
   movementSmoothingSpeed: 5
   smoothInputMovement: {x: 0, y: 0, z: 0}
-  childCamera: {fileID: 1015624432115929002}
 --- !u!114 &457339425371048765
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -636,8 +633,6 @@ MonoBehaviour:
   playerRigidbody: {fileID: 8619024650814983340}
   movementSpeed: 5
   turnSpeed: 0.1
-  playerCam: {fileID: 1015624432115929002}
-  UICam: {fileID: 3675662829193592700}
 --- !u!195 &9140096057581996538
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -660,25 +655,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &837893704789837507
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1799138418030477789}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a405b33c17fe1f439ee2270e92fabbe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  input: {fileID: 457339425371048765}
-  virtualCamera: {fileID: 1655029609805542249}
-  playerLayers:
-  - index: 0
-    layer: 6
-  - index: 1
-    layer: 7
 --- !u!1 &2087024029275156986
 GameObject:
   m_ObjectHideFlags: 0
@@ -1951,7 +1927,6 @@ GameObject:
   - component: {fileID: 1015624432115929002}
   - component: {fileID: 7615315363165258729}
   - component: {fileID: 7896480077351611340}
-  - component: {fileID: 2376131694225095508}
   - component: {fileID: 6992234958252543982}
   m_Layer: 0
   m_Name: Camera
@@ -2078,19 +2053,6 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
---- !u!114 &2376131694225095508
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9185380635389664981}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 160d93dd39f8bb84f90d202646b2afbf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 8244425367347199303}
 --- !u!114 &6992234958252543982
 MonoBehaviour:
   m_ObjectHideFlags: 0

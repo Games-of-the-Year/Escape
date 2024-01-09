@@ -150,7 +150,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.1
+  m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: 29be3f0fab7be40439be66b545517d97, type: 2}
   m_BuildHeightMesh: 0
@@ -213,6 +213,59 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &711024163
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 711024165}
+  - component: {fileID: 711024164}
+  m_Layer: 0
+  m_Name: ComputerroomBack
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &711024164
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 711024163}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &711024165
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 711024163}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 7.65, y: 2.92, z: 9.38}
+  m_LocalScale: {x: 6.8596, y: 6.8252, z: 2}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &760184769 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1799138418030477789, guid: 78e4e8e4db544ec4fbcf6b3119a537ae,
@@ -556,6 +609,59 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &1696498322
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1696498324}
+  - component: {fileID: 1696498323}
+  m_Layer: 0
+  m_Name: ComputerroomFront
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &1696498323
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1696498322}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &1696498324
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1696498322}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -21.36, y: 2.27, z: 9.7}
+  m_LocalScale: {x: 8.409598, y: 7.056813, z: 1.3937}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1917304365
 GameObject:
   m_ObjectHideFlags: 0
@@ -3392,12 +3498,12 @@ PrefabInstance:
     - target: {fileID: 942062775860020837, guid: eab6ab791f6971041a09fb723c6744ab,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.13443442
+      value: -0.13443439
       objectReference: {fileID: 0}
     - target: {fileID: 942062775860020837, guid: eab6ab791f6971041a09fb723c6744ab,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.00057936704
+      value: 0.0005793668
       objectReference: {fileID: 0}
     - target: {fileID: 3166570295087794843, guid: eab6ab791f6971041a09fb723c6744ab,
         type: 3}
@@ -3492,12 +3598,12 @@ PrefabInstance:
     - target: {fileID: 7565090476741612803, guid: eab6ab791f6971041a09fb723c6744ab,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.13443443
+      value: -0.13443437
       objectReference: {fileID: 0}
     - target: {fileID: 7565090476741612803, guid: eab6ab791f6971041a09fb723c6744ab,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.00057936687
+      value: 0.00057936675
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8773,3 +8879,5 @@ SceneRoots:
   - {fileID: 2067955003}
   - {fileID: 2949047591350394368}
   - {fileID: 1396976964}
+  - {fileID: 1696498324}
+  - {fileID: 711024165}

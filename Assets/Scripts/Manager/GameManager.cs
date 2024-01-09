@@ -12,12 +12,12 @@ public class GameManager : Singleton<GameManager>
 
     // Spawned Players
     private List<PlayerController> activePlayerControllers;
-    private bool isPaused;
+    //private bool isPaused;
     private PlayerController focusedPlayerController;
 
     void Start()
     {
-        isPaused = false;
+        //isPaused = false;
 
         SetupBasedOnGameState();
         //SetupUI();
