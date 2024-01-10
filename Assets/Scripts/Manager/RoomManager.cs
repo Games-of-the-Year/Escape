@@ -1,20 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using UnityEngine.Rendering.LookDev;
 
 public class RoomManager : MonoBehaviour
 {
     public GameObject canvas;
     public TMP_InputField inputField;
-
+    public bool isCorrect = false;
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player") && !isCorrect)
         {
             canvas.SetActive(true);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            canvas.SetActive(false);
         }
     }
 
@@ -33,6 +38,8 @@ public class RoomManager : MonoBehaviour
         if (input == ans)
         {
             Debug.Log("Correct");
+            isCorrect = true;
+            canvas.SetActive(false);
         }
     }
 }
