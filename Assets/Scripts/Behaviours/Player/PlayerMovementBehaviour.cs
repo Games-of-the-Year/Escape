@@ -34,11 +34,17 @@ public class PlayerMovementBehaviour : MonoBehaviour
         movementDirection = newMovementDirection;
     }
 
+    private void Update()
+    {
+        playerRigidbody.Move(MoveThePlayer(), TurnThePlayer());
+
+    }
+
     private void FixedUpdate()
     {
         //MoveThePlayer();
         //TurnThePlayer();
-        playerRigidbody.Move(MoveThePlayer(), TurnThePlayer());
+        //playerRigidbody.Move(MoveThePlayer(), TurnThePlayer());
     }
 
 

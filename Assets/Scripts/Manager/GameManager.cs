@@ -11,6 +11,8 @@ public class GameManager : Singleton<GameManager>
     //private bool isPaused;
     private PlayerController focusedPlayerController;
 
+    public bool isEnteringRoom = false;
+
     void Start()
     {
         //isPaused = false;

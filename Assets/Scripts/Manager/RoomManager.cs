@@ -1,15 +1,30 @@
 using UnityEngine;
 using TMPro;
+using Unity.VisualScripting;
 
 public class RoomManager : MonoBehaviour
 {
     public GameObject canvas;
     public TMP_InputField inputField;
-    public bool isCorrect = false;
+
+    GameManager gameManager;
+
+    private void Start()
+    {
+        GameObject manager = GameObject.Find("Manager/GameManager");
+        if (manager != null)
+        {
+            gameManager = manager.GetComponent<GameManager>();
+        }
+        else
+        {
+            Debug.Log("GameManager is null");
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player") && !isCorrect)
+        if (other.gameObject.CompareTag("Player") && !gameManager.isEnteringRoom)
         {
             canvas.SetActive(true);
         }
@@ -38,7 +53,7 @@ public class RoomManager : MonoBehaviour
         if (input == ans)
         {
             Debug.Log("Correct");
-            isCorrect = true;
+            gameManager.isEnteringRoom = true;
             canvas.SetActive(false);
         }
     }
