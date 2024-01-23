@@ -40,18 +40,9 @@ public class PlayerMovementBehaviour : MonoBehaviour
 
     }
 
-    private void FixedUpdate()
-    {
-        //MoveThePlayer();
-        //TurnThePlayer();
-        //playerRigidbody.Move(MoveThePlayer(), TurnThePlayer());
-    }
-
-
     Vector3 MoveThePlayer()
     {
         Vector3 movement = CameraDirection(movementDirection) * movementSpeed * Time.deltaTime;
-        //playerRigidbody.MovePosition(transform.position + movement);
         return transform.position + movement;
     }
 

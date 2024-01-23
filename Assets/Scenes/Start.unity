@@ -705,10 +705,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "A\u30DC\u30BF\u30F3"
+  m_text: "\u30B9\u30BF\u30FC\u30C8"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 4f30ed03b7bafdf42bd507c1e42718da, type: 2}
-  m_sharedMaterial: {fileID: 1341305407961779333, guid: 4f30ed03b7bafdf42bd507c1e42718da,
+  m_fontAsset: {fileID: 11400000, guid: 9bc3cd9f25e6cbe48adb8a580ce93ee6, type: 2}
+  m_sharedMaterial: {fileID: -8224698001124873555, guid: 9bc3cd9f25e6cbe48adb8a580ce93ee6,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
