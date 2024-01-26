@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class SceneChange : MonoBehaviour
 {
-    int hallway = 1, classRoom = 2, musicRoom = 3, ComputerRoom = 4;
+    int hallway = 1, classRoom = 2, musicRoom = 3, ComputerRoom = 4, Library = 5;
 
     GameManager gameManager;
 
@@ -60,6 +60,13 @@ public class SceneChange : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, 180, 0);
             gameManager.isExitingRoom = false;
         }
+        else if (other.gameObject.name == "Library")
+        {
+            SceneManager.LoadScene(Library);
+            transform.position = new Vector3(-7f, 0, 8f);
+            transform.rotation = Quaternion.Euler(0, 180, 0);
+            gameManager.isExitingRoom = false;
+        }
         else if (SceneManager.GetActiveScene().name == "Classroom")
         {
             if (gameManager.isExitingRoom)
@@ -105,6 +112,16 @@ public class SceneChange : MonoBehaviour
                 {
                     SceneManager.LoadScene(hallway);
                     transform.position = new Vector3(-20f, 0, -12f);
+                }
+            }
+        } else if (SceneManager.GetActiveScene().name == "Library")
+        {
+            if (gameManager.isExitingRoom)
+            {
+                if (other.gameObject.name == "Exit")
+                {
+                    SceneManager.LoadScene(hallway);
+                    transform.position = new Vector3(-122f, 0, 4f);
                 }
             }
         }
