@@ -9,6 +9,7 @@ public class RoomManager : MonoBehaviour
 
     int roomNum;
     GameManager gameManager;
+    AudioSource audioSource;
 
     private void Start()
     {
@@ -21,6 +22,8 @@ public class RoomManager : MonoBehaviour
         {
             Debug.Log("GameManager is null");
         }
+
+        audioSource = GetComponent<AudioSource>();
 
         roomNum = SceneManager.GetActiveScene().buildIndex - 2;
     }
@@ -55,7 +58,7 @@ public class RoomManager : MonoBehaviour
         string input = inputField.text;
         if (input == ans)
         {
-            Debug.Log("Correct");
+            audioSource.Play();
             gameManager.isEnteringRoom[roomNum] = false;
             gameManager.isExitingRoom = true;
             gameManager.clearedRoomNum++;
