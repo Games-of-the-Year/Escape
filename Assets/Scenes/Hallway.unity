@@ -632,7 +632,7 @@ MonoBehaviour:
   m_IgnoreTag: Player
   m_TransparentLayers:
     serializedVersion: 2
-    m_Bits: 16
+    m_Bits: 272
   m_MinimumDistanceFromTarget: 0.1
   m_AvoidObstacles: 1
   m_DistanceLimit: 3
@@ -3759,12 +3759,12 @@ PrefabInstance:
     - target: {fileID: 5903355082652006081, guid: eab6ab791f6971041a09fb723c6744ab,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.13606557
+      value: -0.13606559
       objectReference: {fileID: 0}
     - target: {fileID: 5903355082652006081, guid: eab6ab791f6971041a09fb723c6744ab,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.0019114754
+      value: -0.0019114757
       objectReference: {fileID: 0}
     - target: {fileID: 5903355082652006081, guid: eab6ab791f6971041a09fb723c6744ab,
         type: 3}
@@ -3784,7 +3784,7 @@ PrefabInstance:
     - target: {fileID: 6920503491575218814, guid: eab6ab791f6971041a09fb723c6744ab,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.0030323612
+      value: 0.003032361
       objectReference: {fileID: 0}
     - target: {fileID: 6920503491575218814, guid: eab6ab791f6971041a09fb723c6744ab,
         type: 3}
@@ -3794,7 +3794,7 @@ PrefabInstance:
     - target: {fileID: 6920503491575218814, guid: eab6ab791f6971041a09fb723c6744ab,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.022076549
+      value: 0.022076547
       objectReference: {fileID: 0}
     - target: {fileID: 7265040933629773778, guid: eab6ab791f6971041a09fb723c6744ab,
         type: 3}
