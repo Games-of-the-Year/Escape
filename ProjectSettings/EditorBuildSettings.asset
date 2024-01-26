@@ -20,6 +20,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Computerroom.unity
     guid: 4108a6d2be46a8849b23850ffbaf7ff9
+  - enabled: 1
+    path: Assets/Scenes/Dictionaryroom.unity
+    guid: 2b133f10e1b5be64caa2ef796dfed8ba
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: a4dd8a69fa1150c43aa4e053a05946d1,
       type: 2}

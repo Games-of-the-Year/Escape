@@ -18,51 +18,51 @@ public class SceneChange : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name == "ClassroomFront")
+        if (other.gameObject.name == "ClassroomFront" && gameManager.isEnteringRoom[0])
         {
             SceneManager.LoadScene(classRoom);
             transform.position = new Vector3(-9.5f, 0, 11f);
             transform.rotation = Quaternion.Euler(0, 180, 0);
-            gameManager.isEnteringRoom = false;
+            gameManager.isExitingRoom = false;
         }
-        else if (other.gameObject.name == "ClassroomBack")
+        else if (other.gameObject.name == "ClassroomBack" && gameManager.isEnteringRoom[0])
         {
             SceneManager.LoadScene(classRoom);
             transform.position = new Vector3(9.5f, 0, 11f);
             transform.rotation = Quaternion.Euler(0, 180, 0);
-            gameManager.isEnteringRoom = false;
+            gameManager.isExitingRoom = false;
         }
         else if (other.gameObject.name == "MusicroomFront")
         {
             SceneManager.LoadScene(musicRoom);
             transform.position = new Vector3(-9.5f, 0, 11f);
             transform.rotation = Quaternion.Euler(0, 180, 0);
-            gameManager.isEnteringRoom = false;
+            gameManager.isExitingRoom = false;
         }
         else if (other.gameObject.name == "MusicroomBack")
         {
             SceneManager.LoadScene(musicRoom);
             transform.position = new Vector3(9.5f, 0, 11f);
             transform.rotation = Quaternion.Euler(0, 180, 0);
-            gameManager.isEnteringRoom = false;
+            gameManager.isExitingRoom = false;
         }
         else if (other.gameObject.name == "ComputerroomFront")
         {
             SceneManager.LoadScene(ComputerRoom);
             transform.position = new Vector3(-9.5f, 0, 11f);
             transform.rotation = Quaternion.Euler(0, 180, 0);
-            gameManager.isEnteringRoom = false;
+            gameManager.isExitingRoom = false;
         }
         else if (other.gameObject.name == "ComputerroomBack")
         {
             SceneManager.LoadScene(ComputerRoom);
             transform.position = new Vector3(9.5f, 0, 11f);
             transform.rotation = Quaternion.Euler(0, 180, 0);
-            gameManager.isEnteringRoom = false;
+            gameManager.isExitingRoom = false;
         }
         else if (SceneManager.GetActiveScene().name == "Classroom")
         {
-            if (gameManager.isEnteringRoom)
+            if (gameManager.isExitingRoom)
             {
                 if (other.gameObject.name == "Back")
                 {
@@ -78,28 +78,34 @@ public class SceneChange : MonoBehaviour
         }
         else if (SceneManager.GetActiveScene().name == "Musicroom")
         {
-            if (other.gameObject.name == "Back")
+            if (gameManager.isExitingRoom)
             {
-                SceneManager.LoadScene(hallway);
-                transform.position = new Vector3(8f, 0, 15f);
-            }
-            else if (other.gameObject.name == "Front")
-            {
-                SceneManager.LoadScene(hallway);
-                transform.position = new Vector3(-20f, 0, -12f);
+                if (other.gameObject.name == "Back")
+                {
+                    SceneManager.LoadScene(hallway);
+                    transform.position = new Vector3(8f, 0, 15f);
+                }
+                else if (other.gameObject.name == "Front")
+                {
+                    SceneManager.LoadScene(hallway);
+                    transform.position = new Vector3(-20f, 0, -12f);
+                }
             }
         }
         else if (SceneManager.GetActiveScene().name == "Computerroom")
         {
-            if (other.gameObject.name == "Back")
+            if (gameManager.isExitingRoom)
             {
-                SceneManager.LoadScene(hallway);
-                transform.position = new Vector3(8f, 0, 15f);
-            }
-            else if (other.gameObject.name == "Front")
-            {
-                SceneManager.LoadScene(hallway);
-                transform.position = new Vector3(-20f, 0, -12f);
+                if (other.gameObject.name == "Back")
+                {
+                    SceneManager.LoadScene(hallway);
+                    transform.position = new Vector3(8f, 0, 15f);
+                }
+                else if (other.gameObject.name == "Front")
+                {
+                    SceneManager.LoadScene(hallway);
+                    transform.position = new Vector3(-20f, 0, -12f);
+                }
             }
         }
     }

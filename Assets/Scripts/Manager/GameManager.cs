@@ -11,7 +11,8 @@ public class GameManager : Singleton<GameManager>
     //private bool isPaused;
     private PlayerController focusedPlayerController;
 
-    public bool isEnteringRoom = false;
+    public bool[] isEnteringRoom = { false, false, false, false };
+    public bool isExitingRoom = false;
 
     void Start()
     {
