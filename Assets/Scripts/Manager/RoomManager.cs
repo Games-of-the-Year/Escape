@@ -58,6 +58,7 @@ public class RoomManager : MonoBehaviour
             Debug.Log("Correct");
             gameManager.isEnteringRoom[roomNum] = false;
             gameManager.isExitingRoom = true;
+            gameManager.clearedRoomNum++;
             canvas.SetActive(false);
         }
     }

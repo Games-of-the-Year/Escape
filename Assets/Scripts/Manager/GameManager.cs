@@ -13,6 +13,7 @@ public class GameManager : Singleton<GameManager>
 
     public bool[] isEnteringRoom = { false, false, false, false };
     public bool isExitingRoom = false;
+    public int clearedRoomNum = 0;
 
     void Start()
     {
