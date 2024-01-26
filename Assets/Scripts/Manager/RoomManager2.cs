@@ -8,6 +8,7 @@ public class RoomManager2 : MonoBehaviour
     public GameObject USBMemory;
     GameManager gameManager;
     int roomNum;
+    AudioSource audioSource;
 
     private void Start()
     {
@@ -21,12 +22,15 @@ public class RoomManager2 : MonoBehaviour
             Debug.Log("GameManager is null");
         }
 
+        audioSource = GetComponent<AudioSource>();
+
         roomNum = SceneManager.GetActiveScene().buildIndex - 2;
     }
 
     private void OnTriggerEnter(Collider other)
     {
         USBMemory.SetActive(false);
+        audioSource.Play();
         gameManager.isEnteringRoom[roomNum] = false;
         gameManager.isExitingRoom = true;
         gameManager.clearedRoomNum++;
