@@ -67,6 +67,11 @@ public class SceneChange : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, 180, 0);
             gameManager.isExitingRoom = false;
         }
+        else if (other.gameObject.name == "Toilet")
+        {
+            SceneManager.LoadScene("Toilet");
+            transform.position = new Vector3(9f, 0f, -3f);
+        }
         else if (SceneManager.GetActiveScene().name == "Classroom")
         {
             if (gameManager.isExitingRoom)
@@ -114,7 +119,8 @@ public class SceneChange : MonoBehaviour
                     transform.position = new Vector3(-20f, 0, -12f);
                 }
             }
-        } else if (SceneManager.GetActiveScene().name == "Library")
+        }
+        else if (SceneManager.GetActiveScene().name == "Library")
         {
             if (gameManager.isExitingRoom)
             {
@@ -123,6 +129,14 @@ public class SceneChange : MonoBehaviour
                     SceneManager.LoadScene(hallway);
                     transform.position = new Vector3(-122f, 0, 4f);
                 }
+            }
+        }
+        else if (SceneManager.GetActiveScene().name == "Toilet")
+        {
+            if (other.gameObject.name == "Exit")
+            {
+                SceneManager.LoadScene(hallway);
+                transform.position = new Vector3(-119f, 0f, -5.8f);
             }
         }
     }
