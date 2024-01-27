@@ -20,32 +20,16 @@ public class TextManager : MonoBehaviour
     [SerializeField]
     private float textSpeed = 0.1f; // テキストの速さを調整するための変数
 
+    //現在の配列の場所
+    private int currentIndex = 0;
+
     private void Start()
     {
-
         // null確認
-        if (textSetting != null && textSetting.textData != null)
+        if (textSetting != null && textSetting.textData != null && textSetting.textData.Count > 0)
         {
-            // NameTextにTextSettingのnameを表示
-            if (NameText != null)
-            {
-                NameText.text = textSetting.textData[0].name;
-            }
-
-            // MessageTextにTextSettingのmessageを表示
-            if (MessageText != null)
-            {
-                StartCoroutine(DisplayTextOneByOne(MessageText, textSetting.textData[0].message));
-                //MessageText.text = textSetting.textData[0].message;
-            }
-
-            // Nameがナギトの場合、NagitoStateをtureに設定
-            if (textSetting.textData[0].name == "ナギト")
-            {
-                NagitoState = true;
-            }
-
-
+            // 初期テキストの表示
+            ShowTextATIndex(currentIndex);
         }
         else
         {
@@ -53,6 +37,41 @@ public class TextManager : MonoBehaviour
         }
     }
 
+
+    public void OnGameScreenClick()
+    {
+        Debug.Log("クリックした");
+        // 次のテキストを表示
+        currentIndex++;
+        if(currentIndex < textSetting.textData.Count)
+        {
+            ShowTextATIndex(currentIndex);
+        }
+        else
+        {
+            Debug.Log("No more texts to display");
+        }
+    }
+
+    // 指定したインデックスのテキストを表示する関数
+    private void ShowTextATIndex(int index)
+    {
+        Debug.Log("TextCount: " + index + "Message: " + textSetting.textData[index].message);
+
+        // NamaTextにTextSetting
+        if(NameText != null)
+        {
+            NameText.text = textSetting.textData[index].name;
+        }
+
+        // MessageTextにTextSettingのmessageを表示
+        if (MessageText != null)
+        {
+            StartCoroutine(DisplayTextOneByOne(MessageText, textSetting.textData[index].message));
+        }
+    }
+
+    // テキストを一文字ずつ表示するコルーチン
     IEnumerator DisplayTextOneByOne(TextMeshProUGUI textMesh, string fullText)
     {
         for (int i = 0; i <= fullText.Length; i++)

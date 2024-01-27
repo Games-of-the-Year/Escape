@@ -30,8 +30,8 @@ public class LipSyncController : MonoBehaviour
 
             //Debug.Log("currentChar Index" + currentCharIndex);
 
-            Debug.Log("currentMessage: " + currentMessage.Length / 2);
-            Debug.Log("count: " + currentCharIndex);
+            //Debug.Log("currentMessage: " + currentMessage.Length / 2);
+            //Debug.Log("count: " + currentCharIndex);
 
             // 特定の条件で口パクを終了する
             if (currentCharIndex >= (currentMessage.Length / 2))
