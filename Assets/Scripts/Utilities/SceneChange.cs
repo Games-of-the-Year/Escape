@@ -72,6 +72,10 @@ public class SceneChange : MonoBehaviour
             SceneManager.LoadScene("Toilet");
             transform.position = new Vector3(9f, 0f, -3f);
         }
+        else if (other.gameObject.name == "Clear" && gameManager.isClear)
+        {
+            SceneManager.LoadScene("GameClear");
+        }
         else if (SceneManager.GetActiveScene().name == "Classroom")
         {
             if (gameManager.isExitingRoom)

@@ -15,6 +15,7 @@ public class GameManager : Singleton<GameManager>
     public bool[] isEnteringRoom = { false, false, false, false };
     public bool isExitingRoom = false;
     public int clearedRoomNum = 0;
+    public bool isClear = false;
 
     void Start()
     {
@@ -29,7 +30,7 @@ public class GameManager : Singleton<GameManager>
     {
         if (clearedRoomNum == 4)
         {
-            SceneManager.LoadScene("GameClear");
+            isClear = true;
         }
     }
 
