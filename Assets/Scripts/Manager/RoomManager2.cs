@@ -29,10 +29,13 @@ public class RoomManager2 : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (USBMemory.activeSelf == true)
+        {
+            audioSource.Play();
+            gameManager.isEnteringRoom[roomNum] = false;
+            gameManager.isExitingRoom = true;
+            gameManager.clearedRoomNum++;
+        }
         USBMemory.SetActive(false);
-        audioSource.Play();
-        gameManager.isEnteringRoom[roomNum] = false;
-        gameManager.isExitingRoom = true;
-        gameManager.clearedRoomNum++;
     }
 }

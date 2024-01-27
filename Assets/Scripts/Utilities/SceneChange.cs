@@ -120,7 +120,7 @@ public class SceneChange : MonoBehaviour
                 }
             }
         }
-        else if (SceneManager.GetActiveScene().name == "Library")
+        else if (SceneManager.GetActiveScene().name == "Dictionaryroom")
         {
             if (gameManager.isExitingRoom)
             {
