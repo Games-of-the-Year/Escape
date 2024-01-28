@@ -9,6 +9,9 @@ public class LipSyncController : MonoBehaviour
     private TextSetting textSetting;
 
     [SerializeField]
+    private TextManager textManager;
+
+    [SerializeField]
     private CubismMouthController mouthController;
 
     // 口パクの時間　ここでは0.1秒
@@ -19,48 +22,26 @@ public class LipSyncController : MonoBehaviour
 
     private bool isMouthOpen = false; // 口が開いているかどうかのフラグ
 
-    // Update is called once per frame
-    void Update()
+
+    // リップシンク用
+    public void PerformLipSync(string message)
     {
-        // null確認
-        if (textSetting != null && mouthController != null)
         {
-            // TextSettingのmessageに合わせてLive2Dの口パクを制御
-            string currentMessage = textSetting.textData[0].message;
-
-            //Debug.Log("currentChar Index" + currentCharIndex);
-
-            //Debug.Log("currentMessage: " + currentMessage.Length / 2);
-            //Debug.Log("count: " + currentCharIndex);
-
-            // 特定の条件で口パクを終了する
-            if (currentCharIndex >= (currentMessage.Length / 2))
-            {
-                return;
-            }
-
-            // Live2Dモデルの口パクを制御
-            // テキストの長さに応じて口の開閉を制御する
-            SetMouthOpenValues(currentMessage);
+            StartCoroutine(SwitchMouthOpenValue(message));
         }
     }
 
-    // 口の開閉の値を設定する関数
-    void SetMouthOpenValues(string text)
+    // 一定フレームごとにMouthOpeningを切り替える (口パクのやり方)
+    private IEnumerator SwitchMouthOpenValue(string message)
     {
-        if (!isMouthOpen)
-        {
-            StartCoroutine(SwitchMouthOpenValue());
-            isMouthOpen = true;
-        }
+        int messageLength = message.Length;
+        int currentCharIndex = 0;
 
-    }
-
-    // 一定フレームごとにMouthOpeningを切り替える
-    IEnumerator SwitchMouthOpenValue()
-    {
-        while (true)
+        while (currentCharIndex < messageLength)
         {
+            // リップシンク処理
+            // 文字ごとの待機時間を考慮して口パク制御
+
             mouthController.MouthOpening = 1.0f;
             yield return new WaitForSeconds(mouthOpenTime); // 切り替え時間（必要に応じて調整）
 
@@ -68,7 +49,7 @@ public class LipSyncController : MonoBehaviour
             yield return new WaitForSeconds(mouthOpenTime); // 切り替え時間（必要に応じて調整）
 
             // 口パクが終了する条件を満たした場合
-            if (currentCharIndex >= (textSetting.textData[0].message.Length / 2))
+            if (currentCharIndex >= (textSetting.textData[textManager.currentIndex].message.Length / 2))
             {
                 isMouthOpen = false;
                 yield break; // コルーチンを終了
@@ -77,4 +58,5 @@ public class LipSyncController : MonoBehaviour
             currentCharIndex++;
         }
     }
+
 }

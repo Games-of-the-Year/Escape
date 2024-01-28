@@ -14,6 +14,9 @@ public class TextManager : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI MessageText;
 
+    [SerializeField]
+    private LipSyncController lipSync;
+
     // ナギトのセリフ
     public bool NagitoState = false;
 
@@ -21,7 +24,7 @@ public class TextManager : MonoBehaviour
     private float textSpeed = 0.1f; // テキストの速さを調整するための変数
 
     //現在の配列の場所
-    private int currentIndex = 0;
+    public int currentIndex = 0;
 
     //現在実行中のコルーチン
     private Coroutine currentCoroutine;
@@ -37,6 +40,7 @@ public class TextManager : MonoBehaviour
         {
             // 初期テキストの表示
             ShowTextATIndex(currentIndex);
+            lipSync.PerformLipSync(textSetting.textData[currentIndex].message);
         }
         else
         {
@@ -47,7 +51,6 @@ public class TextManager : MonoBehaviour
     // クリックすると次のテキストを表示する
     public void OnGameScreenClick()
     {
-        Debug.Log("クリックした");
 
         // クリックイベントが無効になっている場合は何もしない
         if (clickDisabled)
@@ -69,9 +72,18 @@ public class TextManager : MonoBehaviour
         if(currentIndex < textSetting.textData.Count)
         {
             ShowTextATIndex(currentIndex);
+
+            if(textSetting.textData[currentIndex].N_LipSync == true)
+            {
+                // テキストが表示されるたびにリップシンクを行う
+                lipSync.PerformLipSync(textSetting.textData[currentIndex].message);
+            }
+
         }
         else
         {
+            // テキストなくなった
+            //　Scene移動
             Debug.Log("No more texts to display");
         }
 
@@ -89,7 +101,6 @@ public class TextManager : MonoBehaviour
     // 指定したインデックスのテキストを表示する関数
     private void ShowTextATIndex(int index)
     {
-        Debug.Log("TextCount: " + index + "Message: " + textSetting.textData[index].message);
 
         // NamaTextにTextSetting
         if(NameText != null)
@@ -100,15 +111,12 @@ public class TextManager : MonoBehaviour
         // MessageTextにTextSettingのmessageを表示
         if (MessageText != null)
         {
-            Debug.Log("怪しい 1");
             if(currentCoroutine != null)
             {
-                Debug.Log("怪しい 2");
                 StopCoroutine(currentCoroutine);
             }
 
             // 新しいコルーチンを開始
-            Debug.Log("怪しい 3");
             currentCoroutine = StartCoroutine(DisplayTextOneByOne(MessageText, textSetting.textData[index].message));
         }
     }
