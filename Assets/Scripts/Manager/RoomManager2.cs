@@ -6,9 +6,12 @@ using UnityEngine.SceneManagement;
 public class RoomManager2 : MonoBehaviour
 {
     public GameObject USBMemory;
+    public GameObject timer;
+
     GameManager gameManager;
     int roomNum;
     AudioSource audioSource;
+    Timer timerScript;
 
     private void Start()
     {
@@ -25,6 +28,8 @@ public class RoomManager2 : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
 
         roomNum = SceneManager.GetActiveScene().buildIndex - 2;
+
+        timerScript = timer.GetComponent<Timer>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -32,6 +37,7 @@ public class RoomManager2 : MonoBehaviour
         if (USBMemory.activeSelf == true)
         {
             audioSource.Play();
+            timerScript.isTimerRunning = false;
             gameManager.isEnteringRoom[roomNum] = false;
             gameManager.isExitingRoom = true;
             gameManager.clearedRoomNum++;

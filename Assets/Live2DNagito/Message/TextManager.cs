@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TextManager : MonoBehaviour
 {
@@ -84,7 +85,7 @@ public class TextManager : MonoBehaviour
         {
             // テキストなくなった
             //　Scene移動
-            Debug.Log("No more texts to display");
+            SceneManager.LoadScene("Classroom");
         }
 
         // クリックイベントを有効化

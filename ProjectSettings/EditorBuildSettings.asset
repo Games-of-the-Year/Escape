@@ -32,6 +32,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameOver.unity
     guid: 3bdaa28cd6536dd41b54d26d5143e38d
+  - enabled: 1
+    path: Assets/Scenes/Live2D.unity
+    guid: e2a292b69cdfd6f47aa1a594ad24c225
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: a4dd8a69fa1150c43aa4e053a05946d1,
       type: 2}

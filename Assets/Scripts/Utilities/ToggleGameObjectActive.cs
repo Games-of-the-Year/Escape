@@ -13,13 +13,13 @@ public class ToggleGameObjectActive : MonoBehaviour
 
     private void Update()
     {
-        if (QCanvas.activeSelf)
-        {
-            nagito.SetActive(false);
-        }
-        else if (nagito.activeSelf == false)
-        {
-            nagito.SetActive(true);
-        }
+        //if (QCanvas.activeSelf)
+        //{
+        //    nagito.SetActive(false);
+        //}
+        //else if (nagito.activeSelf == false)
+        //{
+        //    nagito.SetActive(true);
+        //}
     }
 }

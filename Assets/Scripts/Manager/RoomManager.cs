@@ -40,6 +40,14 @@ public class RoomManager : MonoBehaviour
         }
     }
 
+    //private void OnTriggerExit(Collider other)
+    //{
+    //    if (other.gameObject.CompareTag("Player"))
+    //    {
+    //        canvas.SetActive(false);
+    //    }
+    //}
+
     /// <summary>
     /// ボタンクリックで入力フィールドを閉じる
     /// </summary>

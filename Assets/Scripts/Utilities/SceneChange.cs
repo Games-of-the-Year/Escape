@@ -32,35 +32,35 @@ public class SceneChange : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, 180, 0);
             gameManager.isExitingRoom = false;
         }
-        else if (other.gameObject.name == "MusicroomFront")
+        else if (other.gameObject.name == "MusicroomFront" && gameManager.isEnteringRoom[1])
         {
             SceneManager.LoadScene(musicRoom);
             transform.position = new Vector3(-9.5f, 0, 11f);
             transform.rotation = Quaternion.Euler(0, 180, 0);
             gameManager.isExitingRoom = false;
         }
-        else if (other.gameObject.name == "MusicroomBack")
+        else if (other.gameObject.name == "MusicroomBack" && gameManager.isEnteringRoom[1])
         {
             SceneManager.LoadScene(musicRoom);
             transform.position = new Vector3(9.5f, 0, 11f);
             transform.rotation = Quaternion.Euler(0, 180, 0);
             gameManager.isExitingRoom = false;
         }
-        else if (other.gameObject.name == "ComputerroomFront")
+        else if (other.gameObject.name == "ComputerroomFront" && gameManager.isEnteringRoom[2])
         {
             SceneManager.LoadScene(ComputerRoom);
             transform.position = new Vector3(-9.5f, 0, 11f);
             transform.rotation = Quaternion.Euler(0, 180, 0);
             gameManager.isExitingRoom = false;
         }
-        else if (other.gameObject.name == "ComputerroomBack")
+        else if (other.gameObject.name == "ComputerroomBack" && gameManager.isEnteringRoom[2])
         {
             SceneManager.LoadScene(ComputerRoom);
             transform.position = new Vector3(9.5f, 0, 11f);
             transform.rotation = Quaternion.Euler(0, 180, 0);
             gameManager.isExitingRoom = false;
         }
-        else if (other.gameObject.name == "Library")
+        else if (other.gameObject.name == "Library" && gameManager.isEnteringRoom[3])
         {
             SceneManager.LoadScene(Library);
             transform.position = new Vector3(-7f, 0, 8f);

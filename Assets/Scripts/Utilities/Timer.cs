@@ -10,12 +10,18 @@ public class Timer : MonoBehaviour
     public bool isTimerRunning = false;
     public TMP_Text timerText;
 
+    GameObject cameras;
+    GameObject manager;
+    GameObject nagito;
     private float currentTime = 0f;
 
     private void Start()
     {
         timerText.text = FormatTime(countdownDuration);
         isTimerRunning = true;
+        cameras = GameObject.Find("Cameras");
+        manager = GameObject.Find("Manager");
+        nagito = GameObject.Find("Nagito2");
     }
 
     void Update()
@@ -31,6 +37,9 @@ public class Timer : MonoBehaviour
             {
                 isTimerRunning = false;
                 SceneManager.LoadScene("GameOver");
+                Destroy(nagito);
+                Destroy(cameras);
+                Destroy(manager);
             }
         }
     }
