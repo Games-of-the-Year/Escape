@@ -28,6 +28,7 @@ public class GameManager : Singleton<GameManager>
 
     private void Update()
     {
+        // 謎を解いた数が
         if (clearedRoomNum == 4)
         {
             isClear = true;

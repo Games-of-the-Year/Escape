@@ -6,10 +6,12 @@ public class RoomManager : MonoBehaviour
 {
     public GameObject canvas;
     public TMP_InputField inputField;
+    public GameObject timer;
 
     int roomNum;
     GameManager gameManager;
     AudioSource audioSource;
+    Timer timerScript;
 
     private void Start()
     {
@@ -26,6 +28,8 @@ public class RoomManager : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
 
         roomNum = SceneManager.GetActiveScene().buildIndex - 2;
+
+        timerScript = timer.GetComponent<Timer>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -36,19 +40,18 @@ public class RoomManager : MonoBehaviour
         }
     }
 
-    //private void OnTriggerExit(Collider other)
-    //{
-    //    if (other.gameObject.CompareTag("Player"))
-    //    {
-    //        canvas.SetActive(false);
-    //    }
-    //}
-
+    /// <summary>
+    /// ボタンクリックで入力フィールドを閉じる
+    /// </summary>
     public void OnClick()
     {
         canvas.SetActive(false);
     }
 
+    /// <summary>
+    /// 入力フィールドの入力が終了したときに呼び出される
+    /// </summary>
+    /// <param name="ans">正しい答え</param>
     public void OnEndInput(string ans)
     {
         if (inputField == null)
@@ -59,9 +62,12 @@ public class RoomManager : MonoBehaviour
         if (input == ans)
         {
             audioSource.Play();
+            // この部屋に入れなくする
             gameManager.isEnteringRoom[roomNum] = false;
+            // この部屋から出られるようにする
             gameManager.isExitingRoom = true;
             gameManager.clearedRoomNum++;
+            timerScript.isTimerRunning = false;
             canvas.SetActive(false);
         }
     }
