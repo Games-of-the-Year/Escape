@@ -13,6 +13,10 @@ public class SceneChange : MonoBehaviour
         if (manager != null)
         {
             gameManager = manager.GetComponent<GameManager>();
+            if (gameManager == null)
+            {
+                Debug.Log("GameManager is null");
+            }
         }
     }
 

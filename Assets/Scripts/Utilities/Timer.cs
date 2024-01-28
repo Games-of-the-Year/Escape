@@ -26,13 +26,11 @@ public class Timer : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(isTimerRunning);
         if (isTimerRunning)
         {
             currentTime += Time.deltaTime;
             float remainingTime = Mathf.Max(0f, countdownDuration - currentTime);
             timerText.text = FormatTime(remainingTime);
-            Debug.Log(remainingTime);
             if (currentTime >= countdownDuration)
             {
                 isTimerRunning = false;

@@ -12,7 +12,7 @@ public class GameManager : Singleton<GameManager>
     //private bool isPaused;
     private PlayerController focusedPlayerController;
 
-    public bool[] isEnteringRoom = { true, true, true, true };
+    public bool[] isEnteringRoom = new bool[4];
     public bool isExitingRoom = false;
     public int clearedRoomNum = 0;
     public bool isClear = false;
@@ -23,6 +23,11 @@ public class GameManager : Singleton<GameManager>
 
         SetupBasedOnGameState();
         //SetupUI();
+
+        for (int i = 0; i < 4; i++)
+        {
+            isEnteringRoom[i] = true;
+        }
     }
 
 
