@@ -41,7 +41,10 @@ public class TextManager : MonoBehaviour
         {
             // 初期テキストの表示
             ShowTextATIndex(currentIndex);
+
+            // リップシンク
             lipSync.PerformLipSync(textSetting.textData[currentIndex].message);
+
         }
         else
         {
@@ -50,7 +53,7 @@ public class TextManager : MonoBehaviour
     }
 
     // クリックすると次のテキストを表示する
-    public void OnGameScreenClick()
+    public void OnGameScreenClick(string SceneName)
     {
 
         // クリックイベントが無効になっている場合は何もしない
@@ -85,7 +88,7 @@ public class TextManager : MonoBehaviour
         {
             // テキストなくなった
             //　Scene移動
-            SceneManager.LoadScene("Classroom");
+            SceneManager.LoadScene(SceneName);
         }
 
         // クリックイベントを有効化

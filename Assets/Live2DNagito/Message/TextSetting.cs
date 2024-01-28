@@ -12,7 +12,7 @@ public class TextData
     [TextArea(3, 10)]
     public string message;
 
-    public bool N_LipSync;
+    public bool N_LipSync = false;
 }
 
 [CreateAssetMenu(menuName = "ScriptableObject/TextSetting", fileName = "TextSetting")]
