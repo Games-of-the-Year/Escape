@@ -23,6 +23,13 @@ public class TextManager : MonoBehaviour
     //現在の配列の場所
     private int currentIndex = 0;
 
+    //現在実行中のコルーチン
+    private Coroutine currentCoroutine;
+
+    // クリックイベントの無効フラグ
+    private bool clickDisabled = false;
+
+
     private void Start()
     {
         // null確認
@@ -37,10 +44,26 @@ public class TextManager : MonoBehaviour
         }
     }
 
-
+    // クリックすると次のテキストを表示する
     public void OnGameScreenClick()
     {
         Debug.Log("クリックした");
+
+        // クリックイベントが無効になっている場合は何もしない
+        if (clickDisabled)
+        {
+            return;
+        }
+
+        // クリックイベントを一時的に無効化
+        clickDisabled = true;
+
+        // 現在のコルーチンを強制終了
+        if(currentCoroutine != null)
+        {
+            StopCoroutine(currentCoroutine);
+        }
+
         // 次のテキストを表示
         currentIndex++;
         if(currentIndex < textSetting.textData.Count)
@@ -51,6 +74,16 @@ public class TextManager : MonoBehaviour
         {
             Debug.Log("No more texts to display");
         }
+
+        // クリックイベントを有効化
+        StartCoroutine(EnableClick());
+    }
+
+    IEnumerator EnableClick()
+    {
+        // 0.5秒待機してからクリックイベントを有効化
+        yield return new WaitForSeconds(0.5f);
+        clickDisabled = false;
     }
 
     // 指定したインデックスのテキストを表示する関数
@@ -67,7 +100,16 @@ public class TextManager : MonoBehaviour
         // MessageTextにTextSettingのmessageを表示
         if (MessageText != null)
         {
-            StartCoroutine(DisplayTextOneByOne(MessageText, textSetting.textData[index].message));
+            Debug.Log("怪しい 1");
+            if(currentCoroutine != null)
+            {
+                Debug.Log("怪しい 2");
+                StopCoroutine(currentCoroutine);
+            }
+
+            // 新しいコルーチンを開始
+            Debug.Log("怪しい 3");
+            currentCoroutine = StartCoroutine(DisplayTextOneByOne(MessageText, textSetting.textData[index].message));
         }
     }
 
