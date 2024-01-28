@@ -12,7 +12,7 @@ public class GameManager : Singleton<GameManager>
     //private bool isPaused;
     private PlayerController focusedPlayerController;
 
-    public bool[] isEnteringRoom = { false, false, false, false };
+    public bool[] isEnteringRoom = { true, true, true, true };
     public bool isExitingRoom = false;
     public int clearedRoomNum = 0;
     public bool isClear = false;
