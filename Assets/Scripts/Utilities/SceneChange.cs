@@ -6,9 +6,11 @@ public class SceneChange : MonoBehaviour
     int hallway = 1, classRoom = 2, musicRoom = 3, ComputerRoom = 4, Library = 5;
 
     GameManager gameManager;
+    GameObject audio;
 
     private void Start()
     {
+        audio = GameObject.Find("Audio");
         GameObject manager = GameObject.Find("Manager/GameManager");
         if (manager != null)
         {
@@ -78,6 +80,7 @@ public class SceneChange : MonoBehaviour
         }
         else if (other.gameObject.name == "Clear" && gameManager.isClear)
         {
+            Destroy(audio);
             SceneManager.LoadScene("GameClear");
         }
         else if (SceneManager.GetActiveScene().name == "Classroom")

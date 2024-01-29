@@ -13,6 +13,7 @@ public class Timer : MonoBehaviour
     GameObject cameras;
     GameObject manager;
     GameObject nagito;
+    GameObject audio;
     private float currentTime = 0f;
 
     private void Start()
@@ -22,6 +23,7 @@ public class Timer : MonoBehaviour
         cameras = GameObject.Find("Cameras");
         manager = GameObject.Find("Manager");
         nagito = GameObject.Find("Nagito2");
+        audio = GameObject.Find("Audio");
     }
 
     void Update()
@@ -38,6 +40,7 @@ public class Timer : MonoBehaviour
                 Destroy(nagito);
                 Destroy(cameras);
                 Destroy(manager);
+                Destroy(audio);
             }
         }
     }
