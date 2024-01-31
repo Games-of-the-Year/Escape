@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class TextManager : MonoBehaviour
 {
     [SerializeField]
     private TextSetting textSetting;
+
+    [SerializeField]
+    private ImageSetting imageSetting;
 
     [SerializeField]
     private TextMeshProUGUI NameText;
@@ -17,6 +21,12 @@ public class TextManager : MonoBehaviour
 
     [SerializeField]
     private LipSyncController lipSync;
+
+    [SerializeField]
+    private GameObject Live2D;
+
+    [SerializeField]
+    private Image BG; // バックグラウンド画像のImageコンポーネントへの参照
 
     // ナギトのセリフ
     public bool NagitoState = false;
@@ -33,6 +43,9 @@ public class TextManager : MonoBehaviour
     // クリックイベントの無効フラグ
     private bool clickDisabled = false;
 
+    // 前の背景
+    private Sprite prev_bgSprite = null;
+
 
     private void Start()
     {
@@ -42,8 +55,27 @@ public class TextManager : MonoBehaviour
             // 初期テキストの表示
             ShowTextATIndex(currentIndex);
 
-            // リップシンク
-            lipSync.PerformLipSync(textSetting.textData[currentIndex].message);
+            if(textSetting.textData[0].N_LipSync == true)
+            {
+                // リップシンク
+                lipSync.PerformLipSync(textSetting.textData[currentIndex].message);
+            }
+
+            // 背景を設定
+            SetBackGround(textSetting.textData[currentIndex]._BGType);
+
+           
+
+            // ナギト表示処理
+            if (textSetting.textData[currentIndex].N_Off == false)
+            {
+                // ナギトを非表示
+                Live2D.SetActive(true);
+            }
+            else
+            {
+                Live2D.SetActive(false);
+            }
 
         }
         else
@@ -82,6 +114,19 @@ public class TextManager : MonoBehaviour
                 // テキストが表示されるたびにリップシンクを行う
                 lipSync.PerformLipSync(textSetting.textData[currentIndex].message);
             }
+
+            if (textSetting.textData[currentIndex].N_Off == false)
+            {
+                // ナギトを非表示
+                Live2D.SetActive(true);
+            }
+            else
+            {
+                Live2D.SetActive(false);
+            }
+
+            // 背景を設定
+            SetBackGround(textSetting.textData[currentIndex]._BGType);
 
         }
         else
@@ -133,6 +178,38 @@ public class TextManager : MonoBehaviour
             textMesh.text = fullText.Substring(0, i);
             yield return new WaitForSeconds(textSpeed); // 待機時間を変数で指定
         }
+    }
+
+    // 背景切り替え処理
+    private void SetBackGround(BGType bgType)
+    {
+        Sprite bgSprite = prev_bgSprite;
+
+        // 背景の種類に応じて
+        switch (bgType)
+        {
+            case BGType.Black:
+                bgSprite = imageSetting.Black;
+                break;
+            case BGType.Classroom:
+                bgSprite = imageSetting.Classroom;
+                break;
+            case BGType.BadEnd:
+                bgSprite = imageSetting.BadEnd;
+                break;
+            case BGType.HappyStill:
+                bgSprite = imageSetting.HappyStill;
+                break;
+            case BGType.None:
+            default:
+                break;
+        }
+        if (BG != null)
+        {
+            BG.sprite = bgSprite;
+        }
+        prev_bgSprite = bgSprite;
+        
     }
 }
 
