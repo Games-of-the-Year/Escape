@@ -12,6 +12,7 @@ public enum BGType
     Classroom = 2,
     BadEnd = 3,
     HappyStill = 4,
+    Entrance = 5,
 
 }
 
