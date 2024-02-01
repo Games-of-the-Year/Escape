@@ -200,6 +200,9 @@ public class TextManager : MonoBehaviour
             case BGType.HappyStill:
                 bgSprite = imageSetting.HappyStill;
                 break;
+            case BGType.Entrance:
+                bgSprite = imageSetting.Entrance;
+                break;
             case BGType.None:
             default:
                 break;

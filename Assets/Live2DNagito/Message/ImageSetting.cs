@@ -11,5 +11,6 @@ public class ImageSetting : ScriptableObject
     public Sprite Classroom;
     public Sprite BadEnd;
     public Sprite HappyStill;
+    public Sprite Entrance;
 }
 
