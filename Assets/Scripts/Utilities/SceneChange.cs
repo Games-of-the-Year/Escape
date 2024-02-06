@@ -7,6 +7,9 @@ public class SceneChange : MonoBehaviour
 
     GameManager gameManager;
     GameObject audio;
+    GameObject nagito;
+    GameObject cameras;
+
 
     private void Start()
     {
@@ -20,6 +23,10 @@ public class SceneChange : MonoBehaviour
                 Debug.Log("GameManager is null");
             }
         }
+        cameras = GameObject.Find("Cameras");
+        nagito = GameObject.Find("Nagito2");
+        audio = GameObject.Find("Audio");
+
     }
 
     public void OnTriggerEnter(Collider other)
@@ -81,6 +88,8 @@ public class SceneChange : MonoBehaviour
         else if (other.gameObject.name == "Clear" && gameManager.isClear)
         {
             Destroy(audio);
+            Destroy(nagito);
+            Destroy(cameras);
             SceneManager.LoadScene("Live2DEND");
         }
         else if (SceneManager.GetActiveScene().name == "Classroom")
