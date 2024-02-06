@@ -36,7 +36,7 @@ public class Timer : MonoBehaviour
             if (currentTime >= countdownDuration)
             {
                 isTimerRunning = false;
-                SceneManager.LoadScene("GameOver");
+                SceneManager.LoadScene("Live2DBADEND");
                 Destroy(nagito);
                 Destroy(cameras);
                 Destroy(manager);

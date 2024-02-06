@@ -81,7 +81,7 @@ public class SceneChange : MonoBehaviour
         else if (other.gameObject.name == "Clear" && gameManager.isClear)
         {
             Destroy(audio);
-            SceneManager.LoadScene("GameClear");
+            SceneManager.LoadScene("Live2DEND");
         }
         else if (SceneManager.GetActiveScene().name == "Classroom")
         {

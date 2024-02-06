@@ -38,6 +38,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Live2DEND.unity
     guid: f8801ad5f87704340a8b34e5b46f4462
+  - enabled: 1
+    path: Assets/Scenes/Live2DBADEND.unity
+    guid: 6e0d8fa94440038439ac65b74e9d12ca
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: a4dd8a69fa1150c43aa4e053a05946d1,
       type: 2}
